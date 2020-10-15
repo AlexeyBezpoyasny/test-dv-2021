@@ -1,5 +1,5 @@
 # SSL certificates for development
-# $ mkcert oleksii-bezpoiasnyi.local www.oleksii-bezpoiasnyi.local
+# $ mkcert oleksii-bezpoiasnyi.local www.oleksii-bezpoiasnyi.local oleksii-bezpoiasnyi-second.local www.oleksii-bezpoiasnyi-second.local
 #
 # Start composition:
 # $ docker-compose up -d
@@ -27,33 +27,33 @@ services:
     labels:
       - traefik.enable=true
       # HTTP
-      - traefik.http.routers.oleksii-bezpoiasnyi-local-http.rule=Host(`oleksii-bezpoiasnyi.local`,`www.oleksii-bezpoiasnyi.local`)
+      - traefik.http.routers.oleksii-bezpoiasnyi-local-http.rule=Host(`oleksii-bezpoiasnyi.local`,`www.oleksii-bezpoiasnyi.local`,`oleksii-bezpoiasnyi-second.local`,`www.oleksii-bezpoiasnyi-second.local`)
       - traefik.http.routers.oleksii-bezpoiasnyi-local-http.entrypoints=http
       - traefik.http.routers.oleksii-bezpoiasnyi-local-http.service=oleksii-bezpoiasnyi-local-http
       - traefik.http.services.oleksii-bezpoiasnyi-local-http.loadbalancer.server.port=80
       - traefik.http.services.oleksii-bezpoiasnyi-local-http.loadbalancer.server.scheme=http
       # HTTPS
-      - traefik.http.routers.oleksii-bezpoiasnyi-local-https.rule=Host(`oleksii-bezpoiasnyi.local`,`www.oleksii-bezpoiasnyi.local`)
+      - traefik.http.routers.oleksii-bezpoiasnyi-local-https.rule=Host(`oleksii-bezpoiasnyi.local`,`www.oleksii-bezpoiasnyi.local`,`oleksii-bezpoiasnyi-second.local`,`www.oleksii-bezpoiasnyi-second.local`)
       - traefik.http.routers.oleksii-bezpoiasnyi-local-https.entrypoints=https
       - traefik.http.routers.oleksii-bezpoiasnyi-local-https.tls=true
       - traefik.http.routers.oleksii-bezpoiasnyi-local-https.service=oleksii-bezpoiasnyi-local-https
       - traefik.http.services.oleksii-bezpoiasnyi-local-https.loadbalancer.server.port=443
       - traefik.http.services.oleksii-bezpoiasnyi-local-https.loadbalancer.server.scheme=https
       # Develop with extension that allows setting livereload host and port - https://github.com/lokcito/livereload-extensions
-      - traefik.http.routers.oleksii-bezpoiasnyi-local-livereload-https.rule=Host(`oleksii-bezpoiasnyi.local`,`www.oleksii-bezpoiasnyi.local`)
+      - traefik.http.routers.oleksii-bezpoiasnyi-local-livereload-https.rule=Host(`oleksii-bezpoiasnyi.local`,`www.oleksii-bezpoiasnyi.local`,`oleksii-bezpoiasnyi-second.local`,`www.oleksii-bezpoiasnyi-second.local`)
       - traefik.http.routers.oleksii-bezpoiasnyi-local-livereload-https.entrypoints=livereload-https
       - traefik.http.routers.oleksii-bezpoiasnyi-local-livereload-https.tls=true
       - traefik.http.routers.oleksii-bezpoiasnyi-local-livereload-https.service=oleksii-bezpoiasnyi-local-livereload-https
       - traefik.http.services.oleksii-bezpoiasnyi-local-livereload-https.loadbalancer.server.port=35729
       - traefik.http.services.oleksii-bezpoiasnyi-local-livereload-https.loadbalancer.server.scheme=http
-      - traefik.http.routers.oleksii-bezpoiasnyi-local-livereload-http.rule=Host(`oleksii-bezpoiasnyi.local`,`www.oleksii-bezpoiasnyi.local`)
+      - traefik.http.routers.oleksii-bezpoiasnyi-local-livereload-http.rule=Host(`oleksii-bezpoiasnyi.local`,`www.oleksii-bezpoiasnyi.local`,`oleksii-bezpoiasnyi-second.local`,`www.oleksii-bezpoiasnyi-second.local`)
       - traefik.http.routers.oleksii-bezpoiasnyi-local-livereload-http.entrypoints=livereload-http
       - traefik.http.routers.oleksii-bezpoiasnyi-local-livereload-http.service=oleksii-bezpoiasnyi-local-livereload-http
       - traefik.http.services.oleksii-bezpoiasnyi-local-livereload-http.loadbalancer.server.port=35729
       - traefik.http.services.oleksii-bezpoiasnyi-local-livereload-http.loadbalancer.server.scheme=http
     # Must add extra_hosts to be written to /etc/hosts - otherwise containerized application can not curl itself
     extra_hosts:
-      - "oleksii-bezpoiasnyi.local www.oleksii-bezpoiasnyi.local:127.0.0.1"
+      - "oleksii-bezpoiasnyi.local www.oleksii-bezpoiasnyi.local oleksii-bezpoiasnyi-second.local www.oleksii-bezpoiasnyi-second.local:127.0.0.1"
       # Required for xDebug on Linux hosts till docker.host.internal is not available by default - https://github.com/docker/libnetwork/pull/2348/files
       - "host.docker.internal:172.17.0.1"
     links:
@@ -97,21 +97,6 @@ services:
 #      - traefik.enable=false
 #    restart: always
 
-#  elasticsearch:
-#    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.11
-#    environment:
-#      - network.host=0.0.0.0
-#      - http.host=0.0.0.0
-#      - transport.host=127.0.0.1
-#      - xpack.security.enabled=false
-#      - indices.query.bool.max_clause_count=10240
-#      - ES_JAVA_OPTS=-Xms1024m -Xmx1024m
-#    ulimits:
-#      memlock:
-#        soft: -1
-#        hard: -1
-#    restart: always
-#    network_mode: bridge
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
     environment:
