@@ -71,3 +71,4 @@ atlassian*
 !/var/log/.gitkeep
 
 auth.json
+/app/etc/env.php
