@@ -14,9 +14,9 @@ return [
         'connection' => [
             'default' => [
                 'host' => 'mysql',
-                'dbname' => 'oleksii_bezpoiasnyi_local',
-                'username' => 'oleksii_bezpoiasnyi_local',
-                'password' => 'oleksii_bezpoiasnyi_local',
+                'dbname' => 'oleksii_bezpoiasnyi_build_local',
+                'username' => 'oleksii_bezpoiasnyi_build_local',
+                'password' => 'kjdncdwsoi7373hd',
                 'model' => 'mysql4',
                 'engine' => 'innodb',
                 'initStatements' => 'SET NAMES utf8;',
@@ -72,7 +72,7 @@ return [
         'vertex' => 1
     ],
     'downloadable_domains' => [
-        'oleksii-bezpoiasnyi.local'
+        'oleksii-bezpoiasnyi-dev.local'
     ],
     'install' => [
         'date' => 'Tue, 06 Oct 2020 20:55:55 +0000'
@@ -81,33 +81,33 @@ return [
         'default' => [
             'web' => [
                 'unsecure' => [
-                    'base_url' => 'https://oleksii-bezpoiasnyi.local/',
+                    'base_url' => 'https://oleksii-bezpoiasnyi-dev.local/',
                     'base_link_url' => '{{unsecure_base_url}}',
-                    'base_static_url' => 'https://oleksii-bezpoiasnyi.local/static/',
-                    'base_media_url' => 'https://oleksii-bezpoiasnyi.local/media/'
+                    'base_static_url' => 'https://oleksii-bezpoiasnyi-dev.local/static/',
+                    'base_media_url' => 'https://oleksii-bezpoiasnyi-dev.local/media/'
                 ],
                 'secure' => [
-                    'base_url' => 'https://oleksii-bezpoiasnyi.local/',
+                    'base_url' => 'https://oleksii-bezpoiasnyi-dev.local/',
                     'base_link_url' => '{{secure_base_url}}',
-                    'base_static_url' => 'https://oleksii-bezpoiasnyi.local/static/',
-                    'base_media_url' => 'https://oleksii-bezpoiasnyi.local/media/'
-                ]
-            ]
+                    'base_static_url' => 'https://oleksii-bezpoiasnyi-dev.local/static/',
+                    'base_media_url' => 'https://oleksii-bezpoiasnyi-dev.local/media/'
+                ],
+            ],
         ],
         'websites' => [
             'second_website' => [
                 'web' => [
                     'unsecure' => [
-                        'base_url' => 'https://oleksii-bezpoiasnyi-second.local/',
-                        'base_link_url' => 'https://oleksii-bezpoiasnyi-second.local/',
-                        'base_static_url' => 'https://oleksii-bezpoiasnyi-second.local/static/',
-                        'base_media_url' => 'https://oleksii-bezpoiasnyi-second.local/media/'
+                        'base_url' => 'https://oleksii-bezpoiasnyi-second-dev.local/',
+                        'base_link_url' => 'https://oleksii-bezpoiasnyi-second-dev.local/',
+                        'base_static_url' => 'https://oleksii-bezpoiasnyi-second-dev.local/static/',
+                        'base_media_url' => 'https://oleksii-bezpoiasnyi-second-dev.local/media/'
                     ],
                     'secure' => [
-                        'base_url' => 'https://oleksii-bezpoiasnyi-second.local/',
-                        'base_link_url' => 'https://oleksii-bezpoiasnyi-second.local/',
-                        'base_static_url' => 'https://oleksii-bezpoiasnyi-second.local/static/',
-                        'base_media_url' => 'https://oleksii-bezpoiasnyi-second.local/media/'
+                        'base_url' => 'https://oleksii-bezpoiasnyi-second-dev.local/',
+                        'base_link_url' => 'https://oleksii-bezpoiasnyi-second-dev.local/',
+                        'base_static_url' => 'https://oleksii-bezpoiasnyi-second-dev.local/static/',
+                        'base_media_url' => 'https://oleksii-bezpoiasnyi-second-dev.local/media/'
                     ]
                 ]
             ]
