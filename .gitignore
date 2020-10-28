@@ -56,11 +56,13 @@ atlassian*
 /pub/media/tmp/*
 !/pub/media/tmp/.htaccess
 /pub/media/captcha/*
+!/pub/media/styles.css
 /pub/static/*
 !/pub/static/.htaccess
 
 /var/*
 !/var/.htaccess
+!/var/db.sql.gz
 /vendor/*
 !/vendor/.htaccess
 /generated/*
@@ -71,3 +73,4 @@ atlassian*
 !/var/log/.gitkeep
 
 auth.json
+/app/etc/env.php

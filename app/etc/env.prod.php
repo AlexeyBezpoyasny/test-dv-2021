@@ -33,7 +33,7 @@ return [
         ]
     ],
     'x-frame-options' => 'SAMEORIGIN',
-    'MAGE_MODE' => 'developer',
+    'MAGE_MODE' => 'production',
     'session' => [
         'save' => 'files'
     ],
@@ -76,5 +76,41 @@ return [
     ],
     'install' => [
         'date' => 'Tue, 06 Oct 2020 20:55:55 +0000'
+    ],
+    'system' => [
+        'default' => [
+            'web' => [
+                'unsecure' => [
+                    'base_url' => 'https://oleksii-bezpoiasnyi.local/',
+                    'base_link_url' => '{{unsecure_base_url}}',
+                    'base_static_url' => 'https://oleksii-bezpoiasnyi.local/static/',
+                    'base_media_url' => 'https://oleksii-bezpoiasnyi.local/media/'
+                ],
+                'secure' => [
+                    'base_url' => 'https://oleksii-bezpoiasnyi.local/',
+                    'base_link_url' => '{{secure_base_url}}',
+                    'base_static_url' => 'https://oleksii-bezpoiasnyi.local/static/',
+                    'base_media_url' => 'https://oleksii-bezpoiasnyi.local/media/'
+                ]
+            ]
+        ],
+        'websites' => [
+            'second_website' => [
+                'web' => [
+                    'unsecure' => [
+                        'base_url' => 'https://oleksii-bezpoiasnyi-second.local/',
+                        'base_link_url' => 'https://oleksii-bezpoiasnyi-second.local/',
+                        'base_static_url' => 'https://oleksii-bezpoiasnyi-second.local/static/',
+                        'base_media_url' => 'https://oleksii-bezpoiasnyi-second.local/media/'
+                    ],
+                    'secure' => [
+                        'base_url' => 'https://oleksii-bezpoiasnyi-second.local/',
+                        'base_link_url' => 'https://oleksii-bezpoiasnyi-second.local/',
+                        'base_static_url' => 'https://oleksii-bezpoiasnyi-second.local/static/',
+                        'base_media_url' => 'https://oleksii-bezpoiasnyi-second.local/media/'
+                    ]
+                ]
+            ]
+        ]
     ]
 ];
