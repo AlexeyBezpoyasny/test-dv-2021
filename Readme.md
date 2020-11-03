@@ -39,3 +39,9 @@ Deployment process flow implemented in the above files:
 7) switch to the production mode;
 8) turn off maintenance (only for `deploy-full.sh`).
 
+## Script for use Grunt ##
+
+These commands are used in the docker container
+```bash
+grunt clean:theme && grunt exec:theme && grunt less:theme && grunt watch
+```
