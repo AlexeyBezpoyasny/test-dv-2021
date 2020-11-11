@@ -1,0 +1,16 @@
+& when (@media-common = true) {
+    .product.info.detailed .product.data.items .item.title .switch {
+        background-color: @color-blue3;
+        color: @color-white;
+    }
+
+    .product.info.detailed .product.data.items .item.title:not(.disabled) .switch:active,
+    .product.info.detailed .product.data.items .item.title.active .switch,
+    .product.info.detailed .product.data.items .item.title.active .switch:focus,
+    .product.info.detailed .product.data.items .item.title.active .switch:hover,
+    .product.info.detailed .product.data.items .item.title .switch:hover {
+        background: @color-sky-blue1;
+        color: @color-white;
+        font-weight: bold;
+    }
+}

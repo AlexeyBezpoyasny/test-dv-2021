@@ -1,0 +1,28 @@
+& when (@media-common = true) {
+    .page-wrapper .page-header .panel.wrapper,
+    .copyright {
+        background-color: @color-blue3;
+        color: @color-white;
+    }
+    .page-wrapper .page-footer {
+        background-color: @color-sky-blue1;
+    }
+
+    .footer.content .footer.links a {
+        color: @color-white;
+        font-weight: bold;
+    }
+
+    .product.data.items .item.title .switch {
+        background-color: @color-blue3;
+    }
+
+    .product.data.items .item.title:not(.disabled) .switch:active,
+    .product.data.items > .item.title.active > .switch,
+    .product.data.items > .item.title.active > .switch:focus,
+    .product.data.items > .item.title.active > .switch:hover {
+        background: @color-sky-blue1;
+        color: @color-white;
+        font-weight: bold;
+    }
+}
