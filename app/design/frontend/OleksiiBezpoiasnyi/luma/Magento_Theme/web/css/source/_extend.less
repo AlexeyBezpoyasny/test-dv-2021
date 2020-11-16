@@ -4,10 +4,15 @@
         background-color: @color-blue3;
         color: @color-white;
     }
-    .page-wrapper .page-footer {
+    .page-wrapper .page-footer,
+    .footer.content .links > li {
         background-color: @color-sky-blue1;
     }
-
+    .navigation .submenu:not(:first-child) ul > li a,
+    .ui-menu-item a,
+    .nav-sections .header.links li,
+    .nav-sections .header.links a,
+    .nav-sections .header.links a:hover,
     .footer.content .footer.links a {
         color: @color-white;
         font-weight: bold;
@@ -24,5 +29,11 @@
         background: @color-sky-blue1;
         color: @color-white;
         font-weight: bold;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .navigation .submenu:not(:first-child) ul > li a {
+        color: @color-gray34;
     }
 }
