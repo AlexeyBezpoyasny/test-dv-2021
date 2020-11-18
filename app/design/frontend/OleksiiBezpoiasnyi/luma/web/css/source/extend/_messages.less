@@ -1,0 +1,26 @@
+& when (@media-common = true) {
+    .message.success,
+    .message.success *:first-child:before {
+        color: @color-white;
+        background-color: @color-blue3;
+    }
+
+    .message.info,
+    .message.info > *:first-child:before {
+        color: @color-white;
+        font-weight: bold;
+        background-color: @color-sky-blue1;
+    }
+
+    .message.warning,
+    .message.warning > *:first-child:before {
+        color: @color-blue3;
+        background-color: @color-light-red;
+    }
+
+    .message.error,
+    .message.error > *:first-child:before {
+        background-color: @message-warning__background;
+        color: @message-warning__color;
+    }
+}
