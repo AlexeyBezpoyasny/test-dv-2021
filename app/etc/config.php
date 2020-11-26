@@ -310,6 +310,7 @@ return [
         'Klarna_KpGraphQl' => 1,
         'OleksiiBezpoiasnyi_CMS' => 1,
         'OleksiiBezpoiasnyi_Catalog' => 1,
+        'OleksiiBezpoiasnyi_SidebarImage' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Temando_ShippingRemover' => 1,
