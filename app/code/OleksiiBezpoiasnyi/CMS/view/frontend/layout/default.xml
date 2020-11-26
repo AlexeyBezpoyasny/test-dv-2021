@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.panel">
+            <container name="oleksiib.warning.cms.block" htmlTag="div" htmlClass="oleksiib-warning-cms-block">
+                <block class="Magento\Cms\Block\Block" name="OleksiiBezpoiasnyi_CMS">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">warning-demo-block</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
