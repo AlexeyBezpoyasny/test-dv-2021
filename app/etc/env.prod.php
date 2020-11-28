@@ -95,6 +95,13 @@ return [
             ]
         ],
         'websites' => [
+            'base' => [
+                'general' => [
+                    'locale' => [
+                        'code' => 'ru_RU'
+                    ]
+                ]
+            ],
             'second_website' => [
                 'web' => [
                     'unsecure' => [
