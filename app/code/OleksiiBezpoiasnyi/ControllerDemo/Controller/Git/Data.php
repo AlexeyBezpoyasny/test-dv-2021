@@ -27,6 +27,6 @@ class Data implements \Magento\Framework\App\Action\HttpGetActionInterface
      */
     public function execute(): PageResponse
     {
-        return $page = $this->pageResponseFactory->create();
+        return $this->pageResponseFactory->create();
     }
 }

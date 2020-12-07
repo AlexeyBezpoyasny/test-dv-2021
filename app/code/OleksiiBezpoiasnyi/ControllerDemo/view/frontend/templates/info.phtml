@@ -1,4 +1,4 @@
 <?php /** @var \OleksiiBezpoiasnyi\ControllerDemo\Block\Demo $block */ ?>
 <?php /** @var \Magento\Framework\Escaper $escaper */ ?>
-<p class="oleksiib-controller-demo"><?= $escaper->escapeHtml(__('Full name: %1', $block->getFirstName() . ' ' . $block->getLastName())) ?></p>
-<p class="oleksiib-controller-demo"><?= $escaper->escapeHtml(__('Repository URL: ')) . '<a href="' . $block->getRepositoryUrl() . '">' . $escaper->escapeUrl($block->getRepositoryUrl()) ?></a></p>
+<p class="oleksiib-controller-demo"><?= $escaper->escapeHtml(__('Full name: %1 %2', $block->getFirstName(), $block->getLastName())) ?></p>
+<p class="oleksiib-controller-demo"><?= $escaper->escapeHtml(__('Repository URL: ')) . '<a  href="' . $escaper->escapeUrl($block->getRepositoryUrl()) . '">' . $escaper->escapeHtml($block->getRepositoryUrl()) ?></a></p>

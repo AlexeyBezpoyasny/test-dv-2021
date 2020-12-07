@@ -8,25 +8,17 @@ use Magento\Framework\Controller\Result\Forward as ForwardResponse;
 class Forward implements \Magento\Framework\App\Action\HttpGetActionInterface
 {
     /**
-     * @var \Magento\Framework\App\RequestInterface $request
-     */
-    private $request;
-
-    /**
      * @var \Magento\Framework\Controller\Result\ForwardFactory $forwardResponseFactory
      */
     private $forwardResponseFactory;
 
     /**
      * Controller constructor.
-     * @param \Magento\Framework\App\RequestInterface $request
      * @param \Magento\Framework\Controller\Result\ForwardFactory $forwardResponseFactory
      */
     public function __construct(
-        \Magento\Framework\App\RequestInterface $request,
         \Magento\Framework\Controller\Result\ForwardFactory $forwardResponseFactory
     ) {
-        $this->request = $request;
         $this->forwardResponseFactory = $forwardResponseFactory;
     }
     /**
@@ -35,13 +27,12 @@ class Forward implements \Magento\Framework\App\Action\HttpGetActionInterface
     public function execute(): ForwardResponse
     {
         $result = $this->forwardResponseFactory->create();
-        return $result
-            ->setParams(
-                [
-                    'first_name' => 'Oleksii',
-                    'last_name' => 'Bezpoiasnyi',
-                    'repository_url' => 'https://github.com/AlexeyBezpoyasny'
-                ]
-            )->forward('data');
+        return $result->setParams(
+            [
+                'first_name' => 'Oleksii',
+                'last_name' => 'Bezpoiasnyi',
+                'repository_url' => 'https://github.com/AlexeyBezpoyasny'
+            ]
+        )->forward('data');
     }
 }
