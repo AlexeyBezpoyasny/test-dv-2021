@@ -311,6 +311,7 @@ return [
         'OleksiiBezpoiasnyi_CMS' => 1,
         'OleksiiBezpoiasnyi_Catalog' => 1,
         'OleksiiBezpoiasnyi_ControllerDemo' => 1,
+        'OleksiiBezpoiasnyi_RegularCustomer' => 1,
         'OleksiiBezpoiasnyi_SidebarImage' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
