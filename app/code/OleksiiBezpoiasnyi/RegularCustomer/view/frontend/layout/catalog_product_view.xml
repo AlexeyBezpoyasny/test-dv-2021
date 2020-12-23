@@ -10,6 +10,14 @@
                     <argument name="sort_order" xsi:type="string">40</argument>
                     <argument translate="true" name="title" xsi:type="string">Loyalty program for Regular Customers</argument>
                 </arguments>
+                <block class="Magento\Cms\Block\Block"
+                       name="oleksiib.regular.customer.cms"
+                       before="-"
+                >
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">regular-customers</argument>
+                    </arguments>
+                </block>
                 <block class="Magento\Framework\View\Element\Template"
                        name="oleksiib.regular.customer.button"
                        template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/button.phtml"
