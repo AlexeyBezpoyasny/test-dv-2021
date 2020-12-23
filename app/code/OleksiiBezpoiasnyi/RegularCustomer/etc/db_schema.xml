@@ -74,7 +74,7 @@
             <column name="website_id"/>
         </constraint>
         <constraint xsi:type="foreign"
-                    referenceId="OLEKSIIB_REG_CUST_CUST_ID_CUST_ENT_CUST_ID"
+                    referenceId="OLEKSIIB_REGULAR_CSTR_CSTR_ID_CSTR_ENTT_ENTT_ID"
                     table="oleksiib_regular_customer"
                     column="customer_id"
                     referenceTable="customer_entity"
@@ -82,7 +82,7 @@
                     onDelete="SET NULL"
         />
         <constraint xsi:type="foreign"
-                    referenceId="OLEKSIIB_REG_CUST_WS_ID_STORE_WS_WS_ID"
+                    referenceId="OLEKSIIB_REGULAR_CSTR_WS_ID_STORE_WS_WS_ID"
                     table="oleksiib_regular_customer"
                     column="website_id"
                     referenceTable="store_website"
@@ -90,7 +90,7 @@
                     onDelete="SET NULL"
         />
         <constraint xsi:type="foreign"
-                    referenceId="OLEKSIIB_REG_CUST_ADMIN_USER_ID_ADMIN_USER_USER_ID"
+                    referenceId="OLEKSIIB_REGULAR_CUSTOMER_ADMIN_USER_ID_ADMIN_USER_USER_ID"
                     table="oleksiib_regular_customer"
                     column="admin_user_id"
                     referenceTable="admin_user"
