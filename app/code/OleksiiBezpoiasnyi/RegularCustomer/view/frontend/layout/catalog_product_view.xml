@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Framework\View\Element\Text\ListText"
+                   name="oleksiib.regular.customer.tab"
+                   group="detailed_info"
+            >
+                <arguments>
+                    <argument name="sort_order" xsi:type="string">40</argument>
+                    <argument translate="true" name="title" xsi:type="string">Loyalty program for Regular Customers</argument>
+                </arguments>
+                <block class="Magento\Cms\Block\Block"
+                       name="oleksiib.regular.customer.cms"
+                       before="-"
+                >
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">regular-customers</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Template"
+                       name="oleksiib.regular.customer.button"
+                       template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/button.phtml"
+                       group="detailed_info"
+                />
+                <block class="Magento\Catalog\Block\Product\View"
+                       name="oleksiib.regular.customer.form"
+                       template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/form.phtml"
+                       group="detailed_info"
+                />
+            </block>
+        </referenceBlock>
+    </body>
+</page>
