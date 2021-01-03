@@ -6,6 +6,8 @@
             "name": true,
             "email": true,
             "website_id": true,
+            "status": true,
+            "discount_size": true,
             "admin_user_id": true,
             "created_at": true,
             "updated_at": true
