@@ -32,6 +32,10 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
+    /**
+     * @var \Magento\Framework\Data\Form\FormKey\Validator
+     */
+    private $formKeyValidator;
 
     /**
      * Controller constructor.
@@ -41,6 +45,7 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest $discountRequestResource
      * @param \Psr\Log\LoggerInterface $logger
+     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      */
     public function __construct(
         \Magento\Framework\Controller\Result\JsonFactory $jsonFactory,
@@ -48,7 +53,8 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
         \OleksiiBezpoiasnyi\RegularCustomer\Model\DiscountRequestFactory $discountRequestFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest $discountRequestResource,
-        \Psr\Log\LoggerInterface $logger
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
     ) {
         $this->jsonFactory = $jsonFactory;
         $this->request = $request;
@@ -56,6 +62,7 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
         $this->storeManager = $storeManager;
         $this->discountRequestResource = $discountRequestResource;
         $this->logger = $logger;
+        $this->formKeyValidator = $formKeyValidator;
     }
 
     /**
@@ -66,6 +73,10 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
         $response = $this->jsonFactory->create();
 
         try {
+            if (!$this->formKeyValidator->validate($this->request)) {
+                throw new \InvalidArgumentException('Form key is not valid');
+            }
+
             /** @var DiscountRequest $discountRequest */
             $discountRequest = $this->discountRequestFactory->create();
             $discountRequest->setName($this->request->getParam('name'))
