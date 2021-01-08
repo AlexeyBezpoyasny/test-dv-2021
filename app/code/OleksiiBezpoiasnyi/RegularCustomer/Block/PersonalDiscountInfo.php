@@ -32,8 +32,7 @@ class PersonalDiscountInfo extends \Magento\Framework\View\Element\Template
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
         $this->collectionFactory = $collectionFactory;
         $this->storeManager = $storeManager;
