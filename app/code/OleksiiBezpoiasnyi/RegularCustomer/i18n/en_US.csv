@@ -1,11 +1,19 @@
-"Loyalty program for Regular Customers","Loyalty program for Regular Customers"
+pending,pending
+approved,approved
+declined,declined
+"You request for registration in loyalty program was accepted! Your discount will be available after admin verification","You request for registration in loyalty program was accepted! Your discount will be available after admin verification"
+"Your request can't be sent. Please, contact us if you see this message.","Your request can't be sent. Please, contact us if you see this message."
 "Please register to participate in the loyalty program","Please register to participate in the loyalty program"
 "Participate in the program","Participate in the program"
 "Registration in Loyalty Program","Registration in Loyalty Program"
-"Name","Name"
-"Email","Email"
-"Register","Register"
-"You request for register in Loyalty Program was successful!","You request for register in Loyalty Program was successful!"
-"Success","Success"
-"Error","Error"
-"Your request can't be sent. Please, contact us if you see this message.","Your request can't be sent. Please, contact us if you see this message."
+Name,Name
+Email,Email
+Register,Register
+"Your amount of discount:","Your amount of discount:"
+"The amount of the discount has not yet been set by the administrator","The amount of the discount has not yet been set by the administrator"
+"Request status:","Request status:"
+"No request to register in loyalty program","No request to register in loyalty program"
+Success,Success
+Error,Error
+"Loyalty program for Regular Customers","Loyalty program for Regular Customers"
+"Loyalty Program","Loyalty Program"

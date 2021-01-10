@@ -1,0 +1,18 @@
+<?php /** @var \OleksiiBezpoiasnyi\RegularCustomer\Block\PersonalDiscountInfo $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+<?php if ($personalDiscount = $block->getPersonalDiscount()): ?>
+    <p>
+        <span><?= $escaper->escapeHtml(__('Your amount of discount:')) ?></span>
+    <?php if ($personalDiscount->getDiscountSize()): ?>
+        <span><?= $escaper->escapeHtml($personalDiscount->getDiscountSize() . '%') ?></span>
+    <?php else: ?>
+        <span><?= $escaper->escapeHtml(__('The amount of the discount has not yet been set by the administrator')) ?></span>
+    <?php endif; ?>
+    </p>
+    <p>
+        <span><?= $escaper->escapeHtml(__('Request status:')) ?></span>
+        <span><?= $escaper->escapeHtml($block->getStatusMessage($personalDiscount)) ?></span>
+    </p>
+<?php else: ?>
+    <p><?= $escaper->escapeHtml(__('No request to register in loyalty program')) ?></p>
+<?php endif; ?>

@@ -313,6 +313,7 @@ return [
         'OleksiiBezpoiasnyi_ControllerDemo' => 1,
         'OleksiiBezpoiasnyi_RegularCustomer' => 1,
         'OleksiiBezpoiasnyi_SidebarImage' => 1,
+        'OleksiiBezpoiasnyi_Widget' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Temando_ShippingRemover' => 1,

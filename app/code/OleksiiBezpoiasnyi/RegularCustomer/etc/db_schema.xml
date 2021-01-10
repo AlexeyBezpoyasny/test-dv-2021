@@ -36,6 +36,20 @@
                 nullable="true"
                 comment="Website ID"
         />
+        <column xsi:type="smallint"
+                name="status"
+                padding="2"
+                unsigned="true"
+                nullable="false"
+                comment="Status"
+        />
+        <column xsi:type="int"
+                name="discount_size"
+                padding="10"
+                unsigned="true"
+                nullable="true"
+                comment="Discount Size"
+        />
         <column xsi:type="int"
                 name="admin_user_id"
                 padding="10"
