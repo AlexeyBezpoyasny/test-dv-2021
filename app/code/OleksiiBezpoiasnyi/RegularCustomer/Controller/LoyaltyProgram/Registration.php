@@ -93,8 +93,6 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
     {
         $response = $this->jsonFactory->create();
 
-        $lastViewedProductId = $this->catalogSession->getData('last_viewed_product_id');
-
         try {
             if (!$this->formKeyValidator->validate($this->request)) {
                 throw new \InvalidArgumentException('Form key is not valid');
@@ -104,7 +102,11 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
             $discountRequest = $this->discountRequestFactory->create();
 
             if ($this->customerSession->isLoggedIn()) {
-                $this->customerSession->setProductId($lastViewedProductId);
+                $lastViewedProductId = $this->catalogSession->getData('last_viewed_product_id');
+                $sessionProductList = (array)$this->customerSession->getData('product_list');
+                $sessionProductList[] = $lastViewedProductId;
+                $this->customerSession->setProductList($sessionProductList);
+
                 $discountRequest->setName($this->customerSession->getCustomer()->getName())
                     ->setEmail($this->customerSession->getCustomerData()->getEmail())
                     ->setCustomerId($this->customerSession->getCustomerId())
