@@ -83,10 +83,6 @@
         <index referenceId="OLEKSIIB_REGULAR_CUSTOMER_ADMIN_USER_ID" indexType="btree">
             <column name="admin_user_id"/>
         </index>
-        <constraint xsi:type="unique" referenceId="OLEKSIIB_REGULAR_CUSTOMER_EMAIL_WEBSITE_ID">
-            <column name="email"/>
-            <column name="website_id"/>
-        </constraint>
         <constraint xsi:type="foreign"
                     referenceId="OLEKSIIB_REGULAR_CSTR_CSTR_ID_CSTR_ENTT_ENTT_ID"
                     table="oleksiib_regular_customer"
