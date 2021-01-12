@@ -18,7 +18,7 @@
                         <argument name="block_id" xsi:type="string">regular-customers</argument>
                     </arguments>
                 </block>
-                <block class="Magento\Framework\View\Element\Template"
+                <block class="Magento\Catalog\Block\Product\View"
                        name="oleksiib.regular.customer.button"
                        template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/button.phtml"
                        group="detailed_info"
@@ -26,6 +26,11 @@
                 <block class="Magento\Catalog\Block\Product\View"
                        name="oleksiib.regular.customer.form"
                        template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/form.phtml"
+                       group="detailed_info"
+                />
+                <block class="Magento\Framework\View\Element\Template"
+                       name="oleksiib.regular.customer.message"
+                       template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/message.phtml"
                        group="detailed_info"
                 />
             </block>
