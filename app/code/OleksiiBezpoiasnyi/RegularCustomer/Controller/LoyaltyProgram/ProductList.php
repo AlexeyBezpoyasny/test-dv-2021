@@ -16,24 +16,24 @@ class ProductList implements \Magento\Framework\App\Action\HttpPostActionInterfa
      */
     private $customerSession;
     /**
-     * @var \Magento\Catalog\Model\Session
+     * @var \Magento\Framework\App\RequestInterface
      */
-    private $catalogSession;
+    private $request;
 
     /**
      * Controller constructor.
      * @param \Magento\Framework\Controller\Result\JsonFactory $jsonResponseFactory
      * @param \Magento\Customer\Model\Session $customerSession
-     * @param \Magento\Catalog\Model\Session $catalogSession
+     * @param \Magento\Framework\App\RequestInterface $request
      */
     public function __construct(
         \Magento\Framework\Controller\Result\JsonFactory $jsonResponseFactory,
         \Magento\Customer\Model\Session $customerSession,
-        \Magento\Catalog\Model\Session $catalogSession
+        \Magento\Framework\App\RequestInterface $request
     ) {
         $this->jsonResponseFactory = $jsonResponseFactory;
         $this->customerSession = $customerSession;
-        $this->catalogSession = $catalogSession;
+        $this->request = $request;
     }
 
     /***
@@ -43,13 +43,9 @@ class ProductList implements \Magento\Framework\App\Action\HttpPostActionInterfa
     {
         $response = $this->jsonResponseFactory->create();
         $productList = $this->customerSession->getData('product_list');
-        $currentProductId = $this->catalogSession->getData('last_viewed_product_id');
+        $currentProductId = $this->request->getParam('productId');
 
-        if ($productList && in_array($currentProductId, $productList, true)) {
-            $result = true;
-        } else {
-            $result = false;
-        }
+        $result = $productList && in_array($currentProductId, $productList, true);
 
         return $response->setData([
             'result' => $result

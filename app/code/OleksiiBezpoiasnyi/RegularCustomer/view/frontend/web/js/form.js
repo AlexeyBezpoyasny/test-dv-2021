@@ -8,7 +8,8 @@ define([
 
     $.widget('oleksiib.regularCustomerForm', {
         options: {
-            action: ''
+            action: '',
+            productId: ''
         },
 
         /**
@@ -59,6 +60,7 @@ define([
 
             formData.append('form_key', $.mage.cookies.get('form_key'));
             formData.append('isAjax', 1);
+            formData.append('productId', this.options.productId);
 
             $.ajax({
                 url: this.options.action,

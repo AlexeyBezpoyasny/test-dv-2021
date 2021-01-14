@@ -9,7 +9,7 @@ define([
     $.widget('oleksiib.regularCustomerButton', {
         options: {
             url: '',
-            messageWrap: '#oleksiib-regular-customer-message-wrap'
+            productId: ''
         },
 
         /**
@@ -42,7 +42,8 @@ define([
             $.ajax({
                 url: this.options.url,
                 data: {
-                    'isAjax': 1
+                    'isAjax': 1,
+                    'productId': this.options.productId
                 },
                 processData: false,
                 contentType: false,
