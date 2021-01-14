@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace OleksiiBezpoiasnyi\RegularCustomer\Setup\Patch\Schema;
 
-class DropIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInterface
+class DropUniqueIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInterface
 {
     /**
      * @var \Magento\Framework\Setup\ModuleDataSetupInterface $schemaSetup
@@ -27,9 +27,9 @@ class DropIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInterface
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
-    public function apply(): void
+    public function getIndexName(): string
     {
         $configData = $this->deploymentConfig->getConfigData('db');
         $dbName = $configData['connection']['default']['dbname'];
@@ -39,20 +39,33 @@ class DropIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInterface
             $dbName
         );
 
-        $keyword = 'EMAIL_WEBSITE_ID';
+        $columnItem = 'email';
+        $columnItemTwo = 'website_id';
 
-        foreach ($indexList as $index => $name) {
-            if (stripos($index, $keyword)) {
-                $indexName = $index;
+        foreach ($indexList as $indexItem) {
+            if (in_array($columnItem, $indexItem['COLUMNS_LIST'], true)
+                && in_array($columnItemTwo, $indexItem['COLUMNS_LIST'], true)) {
+                $name = $indexItem['KEY_NAME'];
             }
         }
+        /** @var string $name */
+        return $name;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function apply(): void
+    {
+        $configData = $this->deploymentConfig->getConfigData('db');
+        $dbName = $configData['connection']['default']['dbname'];
 
         $this->schemaSetup->getConnection()
-            ->dropIndex(
-                $this->schemaSetup->getTable('oleksiib_regular_customer'),
-                $indexName,
-                $dbName
-            );
+                    ->dropIndex(
+                        $this->schemaSetup->getTable('oleksiib_regular_customer'),
+                        $this->getIndexName(),
+                        $dbName
+                    );
     }
 
     /**
