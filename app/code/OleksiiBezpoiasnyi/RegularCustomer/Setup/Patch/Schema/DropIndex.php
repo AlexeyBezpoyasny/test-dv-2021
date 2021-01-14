@@ -9,14 +9,21 @@ class DropIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInterface
      * @var \Magento\Framework\Setup\ModuleDataSetupInterface $schemaSetup
      */
     private $schemaSetup;
+    /**
+     * @var \Magento\Framework\App\DeploymentConfig
+     */
+    private $deploymentConfig;
 
     /**
      * @param \Magento\Framework\Setup\SchemaSetupInterface $schemaSetup
+     * @param \Magento\Framework\App\DeploymentConfig $deploymentConfig
      */
     public function __construct(
-        \Magento\Framework\Setup\SchemaSetupInterface $schemaSetup
+        \Magento\Framework\Setup\SchemaSetupInterface $schemaSetup,
+        \Magento\Framework\App\DeploymentConfig $deploymentConfig
     ) {
         $this->schemaSetup = $schemaSetup;
+        $this->deploymentConfig = $deploymentConfig;
     }
 
     /**
@@ -24,9 +31,12 @@ class DropIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInterface
      */
     public function apply(): void
     {
+        $configData = $this->deploymentConfig->getConfigData('db');
+        $dbName = $configData['connection']['default']['dbname'];
+
         $indexList = $this->schemaSetup->getConnection()->getIndexList(
             $this->schemaSetup->getTable('oleksiib_regular_customer'),
-            'oleksii_bezpoiasnyi_dev_local'
+            $dbName
         );
 
         $keyword = 'EMAIL_WEBSITE_ID';
@@ -41,7 +51,7 @@ class DropIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInterface
             ->dropIndex(
                 $this->schemaSetup->getTable('oleksiib_regular_customer'),
                 $indexName,
-                'oleksii_bezpoiasnyi_dev_local'
+                $dbName
             );
     }
 
