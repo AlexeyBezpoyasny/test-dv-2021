@@ -55,11 +55,11 @@ class PersonalDiscountInfo extends \Magento\Framework\View\Element\Template
 
     public function getPersonalDiscount(): ?DiscountRequest
     {
-        $customerEmail = $this->customerSession->getCustomerData()->getEmail();
+        $customerId = $this->customerSession->getCustomerData()->getId();
 
         /** @var DiscountRequestCollection $collection */
         $collection = $this->collectionFactory->create();
-        $collection->addFieldToFilter('email', $customerEmail);
+        $collection->addFieldToFilter('customer_id', $customerId);
         $collection->addFieldToFilter('website_id', $this->storeManager->getStore()->getWebsiteId());
         /** @var DiscountRequest $discountRequest */
         $discountRequest = $collection->getFirstItem();
