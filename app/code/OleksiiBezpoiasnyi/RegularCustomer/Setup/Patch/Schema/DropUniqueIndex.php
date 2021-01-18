@@ -42,13 +42,14 @@ class DropUniqueIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInter
         $columnItem = 'email';
         $columnItemTwo = 'website_id';
 
+        /** @var string $name */
+
         foreach ($indexList as $indexItem) {
             if (in_array($columnItem, $indexItem['COLUMNS_LIST'], true)
                 && in_array($columnItemTwo, $indexItem['COLUMNS_LIST'], true)) {
                 $name = $indexItem['KEY_NAME'];
             }
         }
-        /** @var string $name */
         return $name;
     }
 

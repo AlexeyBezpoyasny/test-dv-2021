@@ -45,8 +45,6 @@ define([
                     'isAjax': 1,
                     'productId': this.options.productId
                 },
-                processData: false,
-                contentType: false,
                 type: 'post',
                 dataType: 'json',
                 context: this,
