@@ -5,7 +5,7 @@ namespace OleksiiBezpoiasnyi\RegularCustomer\Controller\LoyaltyProgram;
 
 use Magento\Framework\Controller\Result\Json as JsonResponse;
 
-class ProductList implements \Magento\Framework\App\Action\HttpPostActionInterface
+class ProductList implements \Magento\Framework\App\Action\HttpGetActionInterface
 {
     /**
      * @var \Magento\Framework\Controller\Result\JsonFactory $jsonResponseFactory

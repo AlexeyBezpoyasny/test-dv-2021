@@ -23,14 +23,14 @@ define([
         /**
          * Generate event to open the form
          */
-        openRegisterForm: function () {
+        openRegistrationForm: function () {
             $(document).trigger('oleksiib_regular_customers_form_open');
         },
 
         /**
          * Generate event to displayed message
          */
-        displayedMessage: function () {
+        showAlreadyRegisteredMessage: function () {
             $(document).trigger('oleksiib_regular_customers_show_message');
             $(this.element).css('display', 'none');
         },
@@ -45,16 +45,16 @@ define([
                     'isAjax': 1,
                     'productId': this.options.productId
                 },
-                type: 'post',
+                type: 'get',
                 dataType: 'json',
                 context: this,
 
                 /** @inheritdoc */
                 success: function (response) {
                     if (response.result === false) {
-                        this.openRegisterForm();
+                        this.openRegistrationForm();
                     } else {
-                        this.displayedMessage();
+                        this.showAlreadyRegisteredMessage();
                     }
                 },
 
