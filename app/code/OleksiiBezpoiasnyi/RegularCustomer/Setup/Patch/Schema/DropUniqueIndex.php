@@ -13,17 +13,24 @@ class DropUniqueIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInter
      * @var \Magento\Framework\App\DeploymentConfig
      */
     private $deploymentConfig;
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
+    private $logger;
 
     /**
      * @param \Magento\Framework\Setup\SchemaSetupInterface $schemaSetup
      * @param \Magento\Framework\App\DeploymentConfig $deploymentConfig
+     * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
         \Magento\Framework\Setup\SchemaSetupInterface $schemaSetup,
-        \Magento\Framework\App\DeploymentConfig $deploymentConfig
+        \Magento\Framework\App\DeploymentConfig $deploymentConfig,
+        \Psr\Log\LoggerInterface $logger
     ) {
         $this->schemaSetup = $schemaSetup;
         $this->deploymentConfig = $deploymentConfig;
+        $this->logger = $logger;
     }
 
     /**
@@ -42,7 +49,7 @@ class DropUniqueIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInter
         $columnItem = 'email';
         $columnItemTwo = 'website_id';
 
-        /** @var string $name */
+        $name = '';
 
         foreach ($indexList as $indexItem) {
             if (in_array($columnItem, $indexItem['COLUMNS_LIST'], true)
@@ -61,12 +68,16 @@ class DropUniqueIndex implements \Magento\Framework\Setup\Patch\SchemaPatchInter
         $configData = $this->deploymentConfig->getConfigData('db');
         $dbName = $configData['connection']['default']['dbname'];
 
-        $this->schemaSetup->getConnection()
-                    ->dropIndex(
-                        $this->schemaSetup->getTable('oleksiib_regular_customer'),
-                        $this->getIndexName(),
-                        $dbName
-                    );
+        if ($this->getIndexName() !== '') {
+            $this->schemaSetup->getConnection()
+                ->dropIndex(
+                    $this->schemaSetup->getTable('oleksiib_regular_customer'),
+                    $this->getIndexName(),
+                    $dbName
+                );
+        } else {
+            $this->logger->info('Index not found');
+        }
     }
 
     /**
