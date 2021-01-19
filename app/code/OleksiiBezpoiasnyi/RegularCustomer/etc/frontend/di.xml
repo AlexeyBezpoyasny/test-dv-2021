@@ -3,13 +3,16 @@
     <type name="OleksiiBezpoiasnyi\RegularCustomer\Controller\LoyaltyProgram\Registration">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
-            <argument name="catalogSession" xsi:type="object">Magento\Catalog\Model\Session\Proxy</argument>
         </arguments>
     </type>
     <type name="OleksiiBezpoiasnyi\RegularCustomer\Controller\LoyaltyProgram\ProductList">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
-            <argument name="catalogSession" xsi:type="object">Magento\Catalog\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="OleksiiBezpoiasnyi\RegularCustomer\Block\PersonalDiscountInfo">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
 </config>
