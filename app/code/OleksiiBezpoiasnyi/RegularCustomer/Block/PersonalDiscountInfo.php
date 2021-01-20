@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace OleksiiBezpoiasnyi\RegularCustomer\Block;
 
+use Magento\Framework\Phrase;
 use OleksiiBezpoiasnyi\RegularCustomer\Model\DiscountRequest;
 use OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\Collection as DiscountRequestCollection;
-use Magento\Framework\Phrase;
 
 class PersonalDiscountInfo extends \Magento\Framework\View\Element\Template
 {
@@ -19,38 +19,47 @@ class PersonalDiscountInfo extends \Magento\Framework\View\Element\Template
      * @var \Magento\Store\Model\StoreManagerInterface $storeManager
      */
     private $storeManager;
+    /**
+     * @var \Magento\Customer\Model\Session
+     */
+    private $customerSession;
 
     /**
      * PersonalDiscountInfo constructor.
      * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\CollectionFactory $collectionFactory
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param \Magento\Customer\Model\Session $customerSession
      * @param array $data
      */
     public function __construct(
         \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\CollectionFactory $collectionFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\View\Element\Template\Context $context,
+        \Magento\Customer\Model\Session $customerSession,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
         $this->collectionFactory = $collectionFactory;
         $this->storeManager = $storeManager;
+        $this->customerSession = $customerSession;
     }
 
     /**
      * @return DiscountRequest|null
      * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
 
     // @TODO: implement discount assignment of the admin
 
     public function getPersonalDiscount(): ?DiscountRequest
     {
+        $customerId = $this->customerSession->getCustomerData()->getId();
+
         /** @var DiscountRequestCollection $collection */
         $collection = $this->collectionFactory->create();
-        $collection->addFieldToFilter('email', 'roni_cost@example.com');
+        $collection->addFieldToFilter('customer_id', $customerId);
         $collection->addFieldToFilter('website_id', $this->storeManager->getStore()->getWebsiteId());
         /** @var DiscountRequest $discountRequest */
         $discountRequest = $collection->getFirstItem();
