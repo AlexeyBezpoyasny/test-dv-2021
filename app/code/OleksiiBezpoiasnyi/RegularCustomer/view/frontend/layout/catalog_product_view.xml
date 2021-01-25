@@ -23,7 +23,7 @@
                        template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/button.phtml"
                        group="detailed_info"
                 />
-                <block class="Magento\Catalog\Block\Product\View"
+                <block class="OleksiiBezpoiasnyi\RegularCustomer\Block\Product\View\PersonalDiscountForm"
                        name="oleksiib.regular.customer.form"
                        template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/form.phtml"
                        group="detailed_info"
