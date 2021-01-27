@@ -109,8 +109,8 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
                 : null;
 
             $discountRequest->setProductId($this->request->getParam('productId'))
-                ->setName($this->customerSession->getCustomer()->getName())
-                ->setEmail($this->customerSession->getCustomerData()->getEmail())
+                ->setName($this->request->getParam('name'))
+                ->setEmail($this->request->getParam('email'))
                 ->setCustomerId($customerId)
                 ->setWebsiteId($this->storeManager->getStore()->getWebsiteId())
                 ->setStatus(DiscountRequest::STATUS_PENDING);
