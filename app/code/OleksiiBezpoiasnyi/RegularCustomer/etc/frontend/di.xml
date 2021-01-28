@@ -5,11 +5,6 @@
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="OleksiiBezpoiasnyi\RegularCustomer\Controller\LoyaltyProgram\ProductList">
-        <arguments>
-            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
-        </arguments>
-    </type>
     <type name="OleksiiBezpoiasnyi\RegularCustomer\CustomerData\DiscountRequests">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>

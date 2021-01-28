@@ -1,13 +1,9 @@
-<?php /** @var \Magento\Catalog\Block\Product\View $block */ ?>
 <?php /** @var \Magento\Framework\Escaper $escaper */ ?>
 
 <div>
     <p class="oleksiib-regular-customers-cms"><?= $escaper->escapeHtml(__('Please register to participate in the loyalty program')) ?></p>
     <button class="action primary"
-            data-mage-init='{"oleksiibRegularCustomersButton":{
-            "url": "<?= $escaper->escapeJs($block->getUrl('oleksiib_regular_customers/loyaltyProgram/productList')) ?>",
-            "productId": "<?= $escaper->escapeJs($block->getProduct()->getId()) ?>"
-    }}'>
+            data-mage-init='{"oleksiibRegularCustomersButton":{}}'>
         <span><?= $escaper->escapeHtml(__('Participate in the program')) ?></span>
     </button>
 </div>

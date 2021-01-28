@@ -43,7 +43,7 @@ class DiscountRequests implements \Magento\Customer\CustomerData\SectionSourceIn
             /** @var DiscountRequestCollection $collection */
             $collection = $this->collectionFactory->create();
             $collection->addFieldToFilter('customer_id', $customerId);
-            $productList = $collection->getColumnValues('product_id');
+            $productList = array_map('intval', $collection->getColumnValues('product_id'));
         } else {
             $customerName = $this->customerSession->getGuestName();
             $customerEmail = $this->customerSession->getGuestEmail();

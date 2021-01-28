@@ -94,11 +94,12 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
             /** @var DiscountRequest $discountRequest */
             $discountRequest = $this->discountRequestFactory->create();
 
+            $productId = (int) $this->request->getParam('productId');
+
             if (!$this->customerSession->isLoggedIn()) {
                 $this->customerSession->setGuestName($this->request->getParam('name'));
                 $this->customerSession->setGuestEmail($this->request->getParam('email'));
 
-                $productId = $this->request->getParam('productId');
                 $sessionProductList = (array)$this->customerSession->getData('product_list');
                 $sessionProductList[] = $productId;
                 $this->customerSession->setProductList($sessionProductList);
@@ -108,7 +109,7 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
                 ? (int)$this->customerSession->getCustomerId()
                 : null;
 
-            $discountRequest->setProductId($this->request->getParam('productId'))
+            $discountRequest->setProductId($productId)
                 ->setName($this->request->getParam('name'))
                 ->setEmail($this->request->getParam('email'))
                 ->setCustomerId($customerId)
