@@ -94,22 +94,29 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
             /** @var DiscountRequest $discountRequest */
             $discountRequest = $this->discountRequestFactory->create();
 
-            if ($this->customerSession->isLoggedIn()) {
-                $productId = $this->request->getParam('productId');
+            $productId = (int) $this->request->getParam('productId');
+
+            if (!$this->customerSession->isLoggedIn()) {
+                $this->customerSession->setGuestName($this->request->getParam('name'));
+                $this->customerSession->setGuestEmail($this->request->getParam('email'));
+
                 $sessionProductList = (array)$this->customerSession->getData('product_list');
                 $sessionProductList[] = $productId;
                 $this->customerSession->setProductList($sessionProductList);
-
-                $discountRequest->setName($this->customerSession->getCustomer()->getName())
-                    ->setEmail($this->customerSession->getCustomerData()->getEmail())
-                    ->setCustomerId($this->customerSession->getCustomerId())
-                    ->setWebsiteId($this->storeManager->getStore()->getWebsiteId())
-                    ->setStatus(DiscountRequest::STATUS_PENDING);
-                $this->discountRequestResource->save($discountRequest);
-                $message = __('You request for registration in loyalty program was accepted! Your discount will be available after admin verification');
-            } else {
-                $message = __('Please, sign in or sign up');
             }
+
+            $customerId = $this->customerSession->getCustomerId()
+                ? (int)$this->customerSession->getCustomerId()
+                : null;
+
+            $discountRequest->setProductId($productId)
+                ->setName($this->request->getParam('name'))
+                ->setEmail($this->request->getParam('email'))
+                ->setCustomerId($customerId)
+                ->setWebsiteId($this->storeManager->getStore()->getWebsiteId())
+                ->setStatus(DiscountRequest::STATUS_PENDING);
+            $this->discountRequestResource->save($discountRequest);
+            $message = __('You request for registration in loyalty program was accepted! Your discount will be available after admin verification');
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());
             $message = __('Your request can\'t be sent. Please, contact us if you see this message.');

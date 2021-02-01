@@ -8,6 +8,8 @@ namespace OleksiiBezpoiasnyi\RegularCustomer\Model;
  * @method int|string|null getRequestId()
  * @method int|string|null getCustomerId()
  * @method $this setCustomerId(int $customerId)
+ * @method int|string|null getProductId()
+ * @method $this setProductId(int $productId)
  * @method string|null getName()
  * @method $this setName(string $name)
  * @method string|null getEmail()

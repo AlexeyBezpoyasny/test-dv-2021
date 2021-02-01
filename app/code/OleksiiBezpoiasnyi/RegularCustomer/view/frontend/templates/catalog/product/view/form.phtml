@@ -1,4 +1,4 @@
-<?php /** @var \Magento\Catalog\Block\Product\View $block */ ?>
+<?php /** @var \OleksiiBezpoiasnyi\RegularCustomer\Block\Product\View\PersonalDiscountForm $block */ ?>
 <?php /** @var \Magento\Framework\Escaper $escaper */ ?>
 <div style="display: none;">
     <form class="form"
@@ -7,7 +7,7 @@
           method="post"
           data-mage-init='{"oleksiibRegularCustomersForm":{
               "action": "<?= $escaper->escapeJs($block->getUrl('oleksiib_regular_customers/loyaltyProgram/registration')) ?>",
-              "productId": "<?= $escaper->escapeJs($block->getProduct()->getId()) ?>"
+              "productId": <?= $escaper->escapeJs($block->getProduct()->getId()) ?>
           }}'
           onsubmit="return false;"
     >

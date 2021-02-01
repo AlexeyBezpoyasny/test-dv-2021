@@ -5,7 +5,7 @@
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="OleksiiBezpoiasnyi\RegularCustomer\Controller\LoyaltyProgram\ProductList">
+    <type name="OleksiiBezpoiasnyi\RegularCustomer\CustomerData\DiscountRequests">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
@@ -13,6 +13,13 @@
     <type name="OleksiiBezpoiasnyi\RegularCustomer\Block\PersonalDiscountInfo">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+        <arguments>
+            <argument name="sectionSourceMap" xsi:type="array">
+                <item name="loyalty-program" xsi:type="string">OleksiiBezpoiasnyi\RegularCustomer\CustomerData\DiscountRequests</item>
+            </argument>
         </arguments>
     </type>
 </config>
