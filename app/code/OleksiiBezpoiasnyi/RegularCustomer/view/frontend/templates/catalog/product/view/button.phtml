@@ -1,9 +1,20 @@
+<?php /** @var \OleksiiBezpoiasnyi\RegularCustomer\Block\Product\View\PersonalDiscount $block */ ?>
 <?php /** @var \Magento\Framework\Escaper $escaper */ ?>
-
-<div>
-    <p class="oleksiib-regular-customers-cms"><?= $escaper->escapeHtml(__('Please register to participate in the loyalty program')) ?></p>
-    <button class="action primary"
-            data-mage-init='{"oleksiibRegularCustomersButton":{}}'>
-        <span><?= $escaper->escapeHtml(__('Participate in the program')) ?></span>
-    </button>
+<div data-bind="scope: 'loyaltyProgramButton'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "loyaltyProgramButton": {
+                        "component": "oleksiibRegularCustomersButton",
+                        "productId": <?= (int) $block->getProduct()->getId() ?>
+                    }
+                }
+            }
+        }
+    }
+</script>
