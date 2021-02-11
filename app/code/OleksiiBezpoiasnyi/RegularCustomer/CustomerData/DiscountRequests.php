@@ -7,14 +7,8 @@ use OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\Colle
 
 class DiscountRequests implements \Magento\Customer\CustomerData\SectionSourceInterface
 {
-    /**
-     * @var \Magento\Customer\Model\Session
-     */
-    private $customerSession;
-    /**
-     * @var \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\CollectionFactory
-     */
-    private $collectionFactory;
+    private \Magento\Customer\Model\Session $customerSession;
+    private \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\CollectionFactory $collectionFactory;
 
     /**
      * DiscountRequests constructor.

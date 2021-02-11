@@ -10,19 +10,9 @@ use OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\Colle
 
 class PersonalDiscountInfo extends \Magento\Framework\View\Element\Template
 {
-    /**
-     * @var \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\CollectionFactory $collectionFactory
-     */
-    private $collectionFactory;
-
-    /**
-     * @var \Magento\Store\Model\StoreManagerInterface $storeManager
-     */
-    private $storeManager;
-    /**
-     * @var \Magento\Customer\Model\Session
-     */
-    private $customerSession;
+    private \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\CollectionFactory $collectionFactory;
+    private \Magento\Store\Model\StoreManagerInterface $storeManager;
+    private \Magento\Customer\Model\Session $customerSession;
 
     /**
      * PersonalDiscountInfo constructor.
