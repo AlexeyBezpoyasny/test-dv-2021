@@ -1,0 +1,13 @@
+<?php /** @var \OleksiiBezpoiasnyi\RegularCustomer\Block\Product\View\PersonalDiscount $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+<div data-bind="scope: 'loyaltyProgramTab'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+            }
+        }
+    </script>
+</div>

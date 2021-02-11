@@ -2,7 +2,8 @@ define([
     'jquery',
     'ko',
     'uiComponent',
-    'Magento_Customer/js/customer-data'
+    'Magento_Customer/js/customer-data',
+    'oleksiibRegularCustomersForm'
 ], function ($, ko, Component, customerData) {
     'use strict';
 
@@ -10,7 +11,11 @@ define([
         defaults: {
             productId: 0,
             requestAlreadySent: false,
-            template: 'OleksiiBezpoiasnyi_RegularCustomer/button'
+            template: 'OleksiiBezpoiasnyi_RegularCustomer/button',
+            loyaltyProgramCustomerData: customerData.get('loyalty-program'),
+            listens: {
+                loyaltyProgramCustomerData: 'checkRequestedProduct'
+            }
         },
 
         /**
@@ -20,8 +25,16 @@ define([
             this._super();
             this.observe('requestAlreadySent');
 
-            this.checkRequestedProduct(customerData.get('loyalty-program')());
-            customerData.get('loyalty-program').subscribe(this.checkRequestedProduct.bind(this));
+            return this;
+        },
+
+        /**
+         * Init Links
+         */
+        initLinks: function () {
+            this._super();
+
+            this.checkRequestedProduct(this.loyaltyProgramCustomerData());
 
             return this;
         },
