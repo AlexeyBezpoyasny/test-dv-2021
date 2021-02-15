@@ -9,8 +9,7 @@
             >
                 <arguments>
                     <argument name="sort_order" xsi:type="string">40</argument>
-                    <argument translate="true" name="title" xsi:type="string">Loyalty program for Regular Customers
-                    </argument>
+                    <argument translate="true" name="title" xsi:type="string">Loyalty program for Regular Customers</argument>
                 </arguments>
                 <block class="Magento\Cms\Block\Block"
                        name="oleksiib.regular.customer.cms"
@@ -31,13 +30,10 @@
                                     <item name="component" xsi:type="string">uiComponent</item>
                                     <item name="children" xsi:type="array">
                                         <item name="loyaltyProgramButton" xsi:type="array">
-                                            <item name="component" xsi:type="string">oleksiibRegularCustomersButton
-                                            </item>
+                                            <item name="component" xsi:type="string">oleksiibRegularCustomersButton</item>
                                             <item name="config" xsi:type="array">
                                                 <item name="imports" xsi:type="array">
-                                                    <item name="productId" xsi:type="string">
-                                                        loyaltyProgramTab.loyaltyProgramForm:productId
-                                                    </item>
+                                                    <item name="productId" xsi:type="string">loyaltyProgramTab.loyaltyProgramForm:productId</item>
                                                 </item>
                                             </item>
                                         </item>
