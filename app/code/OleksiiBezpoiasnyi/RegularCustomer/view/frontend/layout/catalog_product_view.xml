@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="product.info.details">
             <block class="Magento\Framework\View\Element\Text\ListText"
@@ -19,15 +20,39 @@
                     </arguments>
                 </block>
                 <block class="OleksiiBezpoiasnyi\RegularCustomer\Block\Product\View\PersonalDiscount"
-                       name="oleksiib-regular-customer-button"
-                       template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/button.phtml"
-                       group="detailed_info"
-                />
-                <block class="OleksiiBezpoiasnyi\RegularCustomer\Block\Product\View\PersonalDiscount"
-                       name="oleksiib-regular-customer-form"
-                       template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/form.phtml"
-                       group="detailed_info"
-                />
+                       name="oleksiib-regular-customer-tab-content"
+                       template="OleksiiBezpoiasnyi_RegularCustomer::catalog/product/view/tab.phtml"
+                       group="detailed_info">
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="loyaltyProgramTab" xsi:type="array">
+                                    <item name="component" xsi:type="string">uiComponent</item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="loyaltyProgramButton" xsi:type="array">
+                                            <item name="component" xsi:type="string">oleksiibRegularCustomersButton</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="imports" xsi:type="array">
+                                                    <item name="productId" xsi:type="string">loyaltyProgramTab.loyaltyProgramForm:productId</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <item name="loyaltyProgramForm" xsi:type="array">
+                                            <item name="component" xsi:type="string">oleksiibRegularCustomersForm</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="action" xsi:type="url"
+                                                      path="oleksiib_regular_customers/loyaltyProgram/registration"/>
+                                                <item name="productId" xsi:type="helper"
+                                                      helper="OleksiiBezpoiasnyi\RegularCustomer\Helper\CurrentProduct::getCurrentProductId"/>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                        <argument name="cache_lifetime" xsi:type="number">84600</argument>
+                    </arguments>
+                </block>
             </block>
         </referenceBlock>
     </body>

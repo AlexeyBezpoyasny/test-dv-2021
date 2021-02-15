@@ -8,10 +8,7 @@ use Magento\Framework\View\Result\Page as PageResponse;
 
 class Index implements \Magento\Framework\App\Action\HttpGetActionInterface
 {
-    /**
-     * @var \Magento\Framework\View\Result\PageFactory $pageResponseFactory
-     */
-    private $pageResponseFactory;
+    private \Magento\Framework\View\Result\PageFactory $pageResponseFactory;
 
     /**
      * Controller constructor.

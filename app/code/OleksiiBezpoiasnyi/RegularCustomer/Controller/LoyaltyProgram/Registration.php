@@ -8,45 +8,21 @@ use OleksiiBezpoiasnyi\RegularCustomer\Model\DiscountRequest;
 
 class Registration implements \Magento\Framework\App\Action\HttpPostActionInterface
 {
-    /**
-     * @var \Magento\Framework\Controller\Result\JsonFactory $jsonFactory
-     */
-    private $jsonFactory;
+    private \Magento\Framework\Controller\Result\JsonFactory $jsonFactory;
 
-    /**
-     * @var \Magento\Framework\App\RequestInterface
-     */
-    private $request;
+    private \Magento\Framework\App\RequestInterface $request;
 
-    /**
-     * @var \OleksiiBezpoiasnyi\RegularCustomer\Model\DiscountRequestFactory
-     */
-    private $discountRequestFactory;
+    private \OleksiiBezpoiasnyi\RegularCustomer\Model\DiscountRequestFactory $discountRequestFactory;
 
-    /**
-     * @var \Magento\Customer\Model\Session
-     */
-    private $customerSession;
+    private \Magento\Customer\Model\Session $customerSession;
 
-    /**
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    private $storeManager;
+    private \Magento\Store\Model\StoreManagerInterface $storeManager;
 
-    /**
-     * @var \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest
-     */
-    private $discountRequestResource;
+    private \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest $discountRequestResource;
 
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
+    private \Psr\Log\LoggerInterface $logger;
 
-    /**
-     * @var \Magento\Framework\Data\Form\FormKey\Validator
-     */
-    private $formKeyValidator;
+    private \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator;
 
     /**
      * Controller constructor.
