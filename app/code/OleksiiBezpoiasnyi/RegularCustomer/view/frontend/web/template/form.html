@@ -10,7 +10,11 @@
             <span translate="'Registration in Loyalty Program'"></span>
         </legend>
         <br/>
-        <div class="field name required">
+        <p data-bind="visible: isLoggedIn()">
+            <span data-bind="text: customerName"></span>
+            <span translate="', for register in loyalty program, please click button below'"></span>
+        </p>
+        <div class="field name required" data-bind="visible: !isLoggedIn()">
             <label class="label" for="oleksiib-regular-customer-name">
                 <span translate="'Name'"></span>
             </label>
@@ -29,7 +33,7 @@
                 />
             </div>
         </div>
-        <div class="field email required">
+        <div class="field email required" data-bind="visible: !isLoggedIn()">
             <label class="label" for="oleksiib-regular-customer-email">
                 <span translate="'Email'"></span>
             </label>

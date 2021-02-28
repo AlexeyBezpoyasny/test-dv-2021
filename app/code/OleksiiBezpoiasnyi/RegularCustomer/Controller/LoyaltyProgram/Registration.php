@@ -24,6 +24,8 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
 
     private \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator;
 
+    private \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config;
+
     /**
      * Controller constructor.
      * @param \Magento\Framework\Controller\Result\JsonFactory $jsonFactory
@@ -34,6 +36,7 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
      * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest $discountRequestResource
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
+     * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config
      */
     public function __construct(
         \Magento\Framework\Controller\Result\JsonFactory $jsonFactory,
@@ -43,7 +46,8 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest $discountRequestResource,
         \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
+        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
+        \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config
     ) {
         $this->jsonFactory = $jsonFactory;
         $this->request = $request;
@@ -53,6 +57,7 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
         $this->discountRequestResource = $discountRequestResource;
         $this->logger = $logger;
         $this->formKeyValidator = $formKeyValidator;
+        $this->config = $config;
     }
 
     /**
@@ -63,6 +68,16 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
         $response = $this->jsonFactory->create();
 
         try {
+            if (!$this->config->enabled()) {
+                throw new \BadMethodCallException('Personal Discount requested, but the request can\'t be handled');
+            }
+
+            if (!$this->customerSession->isLoggedIn()
+                && !$this->config->allowForGuests()
+            ) {
+                throw new \BadMethodCallException('Personal Discount requested, but the request can\'t be handled');
+            }
+
             if (!$this->formKeyValidator->validate($this->request)) {
                 throw new \InvalidArgumentException('Form key is not valid');
             }
@@ -85,9 +100,17 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
                 ? (int)$this->customerSession->getCustomerId()
                 : null;
 
+            if ($this->customerSession->isLoggedIn()) {
+                $name = $this->customerSession->getCustomer()->getName();
+                $email = $this->customerSession->getCustomer()->getEmail();
+            } else {
+                $name = $this->request->getParam('name');
+                $email = $this->request->getParam('email');
+            }
+
             $discountRequest->setProductId($productId)
-                ->setName($this->request->getParam('name'))
-                ->setEmail($this->request->getParam('email'))
+                ->setName($name)
+                ->setEmail($email)
                 ->setCustomerId($customerId)
                 ->setWebsiteId($this->storeManager->getStore()->getWebsiteId())
                 ->setStatus(DiscountRequest::STATUS_PENDING);

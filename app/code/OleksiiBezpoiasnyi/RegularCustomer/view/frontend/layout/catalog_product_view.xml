@@ -6,6 +6,7 @@
             <block class="Magento\Framework\View\Element\Text\ListText"
                    name="oleksiib-regular-customer-tab"
                    group="detailed_info"
+                   ifconfig="oleksii_b_personal_discount/general/enabled"
             >
                 <arguments>
                     <argument name="sort_order" xsi:type="string">40</argument>
