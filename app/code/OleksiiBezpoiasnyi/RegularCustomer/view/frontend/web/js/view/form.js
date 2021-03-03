@@ -13,6 +13,7 @@ define([
             action: '',
             customerName: '',
             customerEmail: '',
+            isLoggedIn: !!customerData.get('loyalty-program')().isLoggedIn,
             hideIt: '',
             productId: 0,
             template: 'OleksiiBezpoiasnyi_RegularCustomer/form'
@@ -23,7 +24,7 @@ define([
          */
         initObservable: function () {
             this._super();
-            this.observe(['customerName', 'customerEmail', 'hideIt']);
+            this.observe(['customerName', 'customerEmail', 'isLoggedIn', 'hideIt']);
 
             this.updateCustomerData(customerData.get('loyalty-program')());
             customerData.get('loyalty-program').subscribe(this.updateCustomerData.bind(this));
@@ -42,6 +43,9 @@ define([
             if (!!value.email) {
                 this.customerEmail(value.email);
             }
+
+            // @TODO: hide form for loggedIn customers
+            this.isLoggedIn(value.isLoggedIn);
         },
 
         /**

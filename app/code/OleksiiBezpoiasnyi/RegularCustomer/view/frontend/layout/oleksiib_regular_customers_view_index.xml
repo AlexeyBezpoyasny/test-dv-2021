@@ -10,6 +10,7 @@
                    name="loyalty.program"
                    template="OleksiiBezpoiasnyi_RegularCustomer::customer/account/view.phtml"
                    cacheable="false"
+                   ifconfig="oleksii_b_personal_discount/general/enabled"
             />
         </referenceContainer>
     </body>
