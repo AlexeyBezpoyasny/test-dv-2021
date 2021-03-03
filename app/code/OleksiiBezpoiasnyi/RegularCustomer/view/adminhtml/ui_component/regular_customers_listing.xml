@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">regular_customers_listing.regular_customers_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>regular_customers_columns</spinner>
+        <deps>
+            <dep>regular_customers_listing.regular_customers_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/newRequest"/>
+                <class>primary</class>
+                <label translate="true">Add New Request</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="regular_customers_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">request_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>OleksiiBezpoiasnyi_RegularCustomer::listing</aclResource>
+        <dataProvider class="OleksiiBezpoiasnyi\RegularCustomer\Ui\Component\RegularCustomersListingProvider" name="regular_customers_listing_data_source">
+            <settings>
+                <requestFieldName>request_id</requestFieldName>
+                <primaryFieldName>request_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <exportButton name="export_button"/>
+        <massaction name="listing_massaction"
+                    class="OleksiiBezpoiasnyi\RegularCustomer\Ui\Component\DiscountRequest\Listing\MassAction"
+                    component="Magento_Ui/js/grid/tree-massactions"
+        >
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected requests?</message>
+                        <title translate="true">Delete Requests</title>
+                    </confirm>
+                    <url path="dv_campus_personal_discount/discount/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            <action name="status">
+                <settings>
+                    <type>edit</type>
+                    <label translate="true">Change status</label>
+                    <actions>
+                        <action name="0">
+                            <type>pending</type>
+                            <label translate="true">Pending</label>
+                            <url path="dv_campus_personal_discount/discount/massChangeStatus">
+                                <param name="status">1</param>
+                            </url>
+                        </action>
+                        <action name="1">
+                            <type>approve</type>
+                            <label translate="true">Approved</label>
+                            <url path="dv_campus_personal_discount/discount/massChangeStatus">
+                                <param name="status">2</param>
+                            </url>
+                        </action>
+                        <action name="2">
+                            <type>decline</type>
+                            <label translate="true">Declined</label>
+                            <url path="dv_campus_personal_discount/discount/massChangeStatus">
+                                <param name="status">3</param>
+                            </url>
+                        </action>
+                    </actions>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="regular_customers_columns">
+        <settings>
+            <editorConfig>
+                <param name="enabled" xsi:type="boolean">false</param>
+            </editorConfig>
+        </settings>
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>request_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="request_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Discount Request ID</label>
+            </settings>
+        </column>
+        <column name="product_id" component="Magento_Ui/js/grid/columns/link" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="link" xsi:type="string">product_link</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Product ID</label>
+            </settings>
+        </column>
+        <column name="product_name"  sortOrder="30">
+            <settings>
+                <sortable>false</sortable>
+                <label translate="true">Product Name</label>
+            </settings>
+        </column>
+        <!-- @TODO: render Customer ID and customer name in the same way s product ID or name -->
+        <!-- Note that guest customers do not have ID! In this case column must be empty -->
+        <column name="name" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Entered Name</label>
+            </settings>
+        </column>
+        <column name="email" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="created_at" sortOrder="55">
+            <settings>
+                <filter>datetimeRange</filter>
+                <sortable>false</sortable>
+                <label translate="true">Date added</label>
+            </settings>
+        </column>
+        <column name="website_id"
+                class="Magento\Customer\Ui\Component\Listing\Column\Websites"
+                component="Magento_Ui/js/grid/columns/select"
+                sortOrder="70"
+        >
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <options class="Magento\Store\Model\ResourceModel\Website\Collection"/>
+                <label translate="true">Website</label>
+            </settings>
+        </column>
+        <column name="status"
+                component="Magento_Ui/js/grid/columns/select"
+                sortOrder="80"
+        >
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <options class="OleksiiBezpoiasnyi\RegularCustomer\Ui\Component\DiscountRequest\Source\Status"/>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="OleksiiBezpoiasnyi\RegularCustomer\Ui\Component\DiscountRequest\Listing\Column\BlockActions">
+            <settings>
+                <indexField>request_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

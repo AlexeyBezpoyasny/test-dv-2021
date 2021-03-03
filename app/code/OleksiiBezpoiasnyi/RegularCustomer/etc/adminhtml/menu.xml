@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="OleksiiBezpoiasnyi_RegularCustomer::general"
+             title="Oleksii Bezpoiasnyi"
+             module="OleksiiBezpoiasnyi_RegularCustomer"
+             sortOrder="100"
+             parent="Magento_Backend::marketing"
+             resource="OleksiiBezpoiasnyi_RegularCustomer::general"
+        />
+        <add id="OleksiiBezpoiasnyi_RegularCustomer::listing"
+             title="Regular Customers"
+             translate="title"
+             module="OleksiiBezpoiasnyi_RegularCustomer"
+             sortOrder="100"
+             parent="OleksiiBezpoiasnyi_RegularCustomer::general"
+             action="oleksiib_regular_customers/discount/index"
+             resource="OleksiiBezpoiasnyi_RegularCustomer::listing"
+        />
+    </menu>
+</config>
