@@ -56,7 +56,6 @@ class MassAction extends \Magento\Ui\Component\MassAction
 
         $origConfig = $this->getConfiguration();
 
-        // If configs are equal this means no mass actions were added
         if ($origConfig === $config) {
             $config['componentDisabled'] = true;
         } else {

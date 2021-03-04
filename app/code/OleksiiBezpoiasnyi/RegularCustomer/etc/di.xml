@@ -5,12 +5,12 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="regular_customers_listing_data_source" xsi:type="string">OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\Discounts\Grid\Collection</item>
-<!--                <item name="discount_form_data_source" xsi:type="string">DVCampus\PersonalDiscount\Model\ResourceModel\Discounts\Grid\Collection</item>-->
+                <item name="regular_customers_listing_data_source" xsi:type="string">OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\Discount\Grid\Collection</item>
+                <item name="regular_customers_form_data_source" xsi:type="string">OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\Discount\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\Discounts\Grid\Collection"
+    <virtualType name="OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\Discount\Grid\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult"
     >
         <arguments>

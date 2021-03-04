@@ -26,7 +26,6 @@ class RegularCustomersListingProvider extends \Magento\Framework\View\Element\Ui
      */
     public function __construct(
         \Magento\Backend\Model\UrlInterface $urlBuilder,
-        // @TODO: use repository
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
         $name,
         $primaryFieldName,

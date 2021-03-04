@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">regular_customers_form.regular_customers_form_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="spinner" xsi:type="string">regular_customers_form</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="OleksiiBezpoiasnyi\RegularCustomer\Block\Adminhtml\DiscountRequest\Button\Save"/>
+            <button name="delete" class="OleksiiBezpoiasnyi\RegularCustomer\Block\Adminhtml\DiscountRequest\Button\Delete"/>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <namespace>regular_customers_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>regular_customers_form.regular_customers_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="regular_customers_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="oleksiib_regular_customers/discount/save"/>
+        </settings>
+        <dataProvider class="OleksiiBezpoiasnyi\RegularCustomer\Ui\Component\RegularCustomersFormProvider" name="regular_customers_form_data_source">
+            <settings>
+                <requestFieldName>request_id</requestFieldName>
+                <primaryFieldName>request_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="regular_customers_form">
+        <settings>
+            <label/>
+        </settings>
+        <field name="request_id" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>request_id</dataScope>
+            </settings>
+        </field>
+        <field name="product_id" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Product ID</label>
+                <dataScope>product_id</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="customer_id" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Customer Id</label>
+                <dataScope>customer_id</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="name" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <field name="email" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Email</label>
+                <dataScope>email</dataScope>
+                <validation>
+                    <rule name="validate-email" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>
