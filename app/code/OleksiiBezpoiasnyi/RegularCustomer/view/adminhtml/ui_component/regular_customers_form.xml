@@ -63,7 +63,6 @@
                 <label translate="true">Customer Id</label>
                 <dataScope>customer_id</dataScope>
                 <validation>
-                    <rule name="required-entry" xsi:type="boolean">true</rule>
                     <rule name="validate-number" xsi:type="boolean">true</rule>
                 </validation>
             </settings>
@@ -84,6 +83,24 @@
                     <rule name="validate-email" xsi:type="boolean">true</rule>
                 </validation>
             </settings>
+        </field>
+        <field name="status" formElement="select">
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="OleksiiBezpoiasnyi\RegularCustomer\Ui\Component\DiscountRequest\Source\Status"/>
+                    </settings>
+                </select>
+            </formElements>
         </field>
     </fieldset>
 </form>
