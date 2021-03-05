@@ -44,8 +44,10 @@ class Save extends \Magento\Backend\App\Action implements \Magento\Framework\App
             /** @var DiscountRequest $discountRequest */
             $discountRequest = $this->discountRequestFactory->create();
             $adminId = $this->authSession->getUser()->getId();
+            $customerId = $this->getRequest()->getParam('customer_id') ?: null;
 
             $discountRequest->setProductId($this->getRequest()->getParam('product_id'))
+                ->setCustomerId($customerId)
                 ->setName($this->getRequest()->getParam('name'))
                 ->setEmail($this->getRequest()->getParam('email'))
                 ->setWebsiteId($this->getRequest()->getParam('website_id'))

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace OleksiiBezpoiasnyi\RegularCustomer\Ui\Component;
 
 use Magento\Catalog\Model\Product;
+use Magento\Customer\Model\Customer;
 
 class RegularCustomersListingProvider extends \Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
 {
@@ -11,9 +12,12 @@ class RegularCustomersListingProvider extends \Magento\Framework\View\Element\Ui
 
     private \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory;
 
+    private \Magento\Customer\Model\ResourceModel\Customer\CollectionFactory $customerCollectionFactory;
+
     /**
      * @param \Magento\Backend\Model\UrlInterface $urlBuilder
      * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
+     * @param \Magento\Customer\Model\ResourceModel\Customer\CollectionFactory $customerCollectionFactory
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
@@ -27,6 +31,7 @@ class RegularCustomersListingProvider extends \Magento\Framework\View\Element\Ui
     public function __construct(
         \Magento\Backend\Model\UrlInterface $urlBuilder,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+        \Magento\Customer\Model\ResourceModel\Customer\CollectionFactory $customerCollectionFactory,
         $name,
         $primaryFieldName,
         $requestFieldName,
@@ -36,7 +41,8 @@ class RegularCustomersListingProvider extends \Magento\Framework\View\Element\Ui
         \Magento\Framework\Api\FilterBuilder $filterBuilder,
         array $meta = [],
         array $data = []
-    ) {
+    )
+    {
         parent::__construct(
             $name,
             $primaryFieldName,
@@ -50,6 +56,7 @@ class RegularCustomersListingProvider extends \Magento\Framework\View\Element\Ui
         );
         $this->urlBuilder = $urlBuilder;
         $this->productCollectionFactory = $productCollectionFactory;
+        $this->customerCollectionFactory = $customerCollectionFactory;
     }
 
     /**
@@ -62,11 +69,22 @@ class RegularCustomersListingProvider extends \Magento\Framework\View\Element\Ui
         $productCollection->addAttributeToSelect('name')
             ->addIdFilter(array_column($data['items'], 'product_id'));
 
+        $customerCollection = $this->customerCollectionFactory->create();
+        $customerCollection->addAttributeToSelect('*')
+            ->addAttributeToFilter('entity_id', array_column($data['items'], 'customer_id'));
+
         foreach ($data['items'] as &$item) {
             $item['product_link'] = $this->urlBuilder->getUrl('catalog/product/edit', ['id' => $item['product_id']]);
             /** @var Product $product */
             $product = $productCollection->getItemById($item['product_id']);
             $item['product_name'] = $product->getName();
+
+            $item['customer_link'] = $this->urlBuilder->getUrl('customer/index/edit', ['id' => $item['customer_id']]);
+            /** @var Customer $customer */
+            $customer = $customerCollection->getItemById($item['customer_id']);
+            if ($item['customer_id']) {
+                $item['customer_name'] = $customer->getName();
+            }
         }
 
         return $data;
