@@ -6,8 +6,19 @@ namespace OleksiiBezpoiasnyi\RegularCustomer\Model;
 
 use Magento\Store\Model\ScopeInterface;
 
-class Config extends \Magento\Framework\App\Helper\AbstractHelper
+class Config
 {
+    private \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig;
+
+    /**
+     * Config constructor.
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     */
+    public function __construct(\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig)
+    {
+        $this->scopeConfig = $scopeConfig;
+    }
+
     public const XML_PATH_OLEKSII_B_PERSONAL_DISCOUNT_GENERAL_ENABLED
         = 'oleksii_b_personal_discount/general/enabled';
 

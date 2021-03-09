@@ -20,6 +20,10 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
 
     private \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest $discountRequestResource;
 
+    private \Magento\Catalog\Model\ProductRepository $productRepository;
+
+    private \OleksiiBezpoiasnyi\RegularCustomer\Model\Email $email;
+
     private \Psr\Log\LoggerInterface $logger;
 
     private \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator;
@@ -34,6 +38,8 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
      * @param \Magento\Customer\Model\Session $customerSession
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest $discountRequestResource
+     * @param \Magento\Catalog\Model\ProductRepository $productRepository
+     * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\Email $email
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config
@@ -45,6 +51,8 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest $discountRequestResource,
+        \Magento\Catalog\Model\ProductRepository $productRepository,
+        \OleksiiBezpoiasnyi\RegularCustomer\Model\Email $email,
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config
@@ -55,9 +63,12 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
         $this->customerSession = $customerSession;
         $this->storeManager = $storeManager;
         $this->discountRequestResource = $discountRequestResource;
+        $this->productRepository = $productRepository;
+        $this->email = $email;
         $this->logger = $logger;
         $this->formKeyValidator = $formKeyValidator;
         $this->config = $config;
+
     }
 
     /**
@@ -86,6 +97,7 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
             $discountRequest = $this->discountRequestFactory->create();
 
             $productId = (int) $this->request->getParam('productId');
+            $product = $this->productRepository->getById($productId);
 
             if (!$this->customerSession->isLoggedIn()) {
                 $this->customerSession->setGuestName($this->request->getParam('name'));
@@ -116,6 +128,8 @@ class Registration implements \Magento\Framework\App\Action\HttpPostActionInterf
                 ->setStatus(DiscountRequest::STATUS_PENDING);
             $this->discountRequestResource->save($discountRequest);
             $message = __('You request for registration in loyalty program was accepted! Your discount will be available after admin verification');
+
+            $this->email->sendNewDiscountRequestEmail($name, $email, $product->getName());
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());
             $message = __('Your request can\'t be sent. Please, contact us if you see this message.');
