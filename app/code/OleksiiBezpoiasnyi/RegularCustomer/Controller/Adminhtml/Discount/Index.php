@@ -5,10 +5,11 @@ namespace OleksiiBezpoiasnyi\RegularCustomer\Controller\Adminhtml\Discount;
 
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
+use OleksiiBezpoiasnyi\RegularCustomer\Model\Authorization;
 
 class Index extends \Magento\Backend\App\Action implements \Magento\Framework\App\Action\HttpGetActionInterface
 {
-    public const ADMIN_RESOURCE = 'OleksiiBezpoiasnyi_RegularCustomer::listing';
+    public const ADMIN_RESOURCE = Authorization::ACTION_DISCOUNT_REQUEST;
 
     /**
      * @inheritDoc

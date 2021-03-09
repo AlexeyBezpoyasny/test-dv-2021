@@ -6,6 +6,8 @@ namespace OleksiiBezpoiasnyi\RegularCustomer\Model;
 
 class Authorization
 {
+    public const ACTION_DISCOUNT_REQUEST = 'OleksiiBezpoiasnyi_RegularCustomer::listing';
+
     public const ACTION_DISCOUNT_REQUEST_EDIT = 'OleksiiBezpoiasnyi_RegularCustomer::edit';
 
     public const ACTION_DISCOUNT_REQUEST_DELETE = 'OleksiiBezpoiasnyi_RegularCustomer::delete';
