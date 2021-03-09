@@ -24,4 +24,29 @@ Error,Error
 "Settings per store view are not available","Settings per store view are not available"
 "Enabled","Enabled"
 "Allow for Guests","Allow for Guests"
-"Allow guests to submit discount requests","Allow guests to submit discount requests"
+"Allow guests to submit discount requests","Allow guests to submit discount requests",
+"Regular Customers","Regular Customers"
+"Personal Discount","Personal Discount"
+"Edit","Edit"
+"Delete","Delete",
+"Add New Request","Add New Request",
+"Are you sure you want to delete selected requests?","Are you sure you want to delete selected requests?"
+"Delete Requests","Delete Requests"
+"Change status","Change status"
+Pending,Pending
+Approved,Approved
+Declined,Declined
+"Discount Request ID","Discount Request ID"
+"Product ID","Product ID"
+"Product Name","Product Name"
+"Entered Name","Entered Name"
+"Are you sure you want to delete this request?","Are you sure you want to delete this request?"
+"Website","Website"
+"Status","Status"
+"Date added","Date added"
+"Request deleted!","Request deleted!"
+"We can\'t find a request to delete.","We can\'t find a request to delete."
+"This request no longer exists.","This request no longer exists."
+"Edit Discount Request","Edit Discount Request"
+"New Discount Request","New Discount Request"
+Save,Save
