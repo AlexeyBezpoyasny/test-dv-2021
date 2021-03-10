@@ -36,6 +36,14 @@
                 length="255"
                 comment="Email"
         />
+        <column xsi:type="tinyint"
+                name="email_sent"
+                padding="7"
+                default="0"
+                unsigned="true"
+                nullable="true"
+                comment="Email Sent"
+        />
         <column xsi:type="smallint"
                 name="website_id"
                 padding="5"
