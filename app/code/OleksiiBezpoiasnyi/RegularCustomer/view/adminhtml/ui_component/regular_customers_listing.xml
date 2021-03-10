@@ -165,6 +165,11 @@
                 <label translate="true">Email</label>
             </settings>
         </column>
+        <column name="email_already_sent" sortOrder="53">
+            <settings>
+                <label translate="true">Email Sent</label>
+            </settings>
+        </column>
         <column name="created_at" sortOrder="55">
             <settings>
                 <filter>datetimeRange</filter>
