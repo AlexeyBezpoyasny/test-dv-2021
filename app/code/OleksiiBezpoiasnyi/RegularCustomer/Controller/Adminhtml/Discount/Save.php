@@ -45,7 +45,8 @@ class Save extends \Magento\Backend\App\Action implements \Magento\Framework\App
         \Magento\Customer\Model\ResourceModel\CustomerRepository $customerRepository,
         \Magento\Store\Model\StoreManager $storeManager,
         \Magento\Backend\App\Action\Context $context
-    ) {
+    )
+    {
         parent::__construct($context);
         $this->discountRequestFactory = $discountRequestFactory;
         $this->discountRequestResource = $discountRequestResource;
@@ -74,8 +75,33 @@ class Save extends \Magento\Backend\App\Action implements \Magento\Framework\App
                 ->setName($this->getRequest()->getParam('name'))
                 ->setEmail($this->getRequest()->getParam('email'))
                 ->setWebsiteId($this->getRequest()->getParam('website_id'))
-                ->setStatus($this->getRequest()->getParam('status'))
                 ->setAdminUserId($adminId);
+            if ($discountRequest->getStatus() !== $this->getRequest()->getParam('status')) {
+                $discountRequest->setEmailSent(0)
+                    ->setStatus($this->getRequest()->getParam('status'));
+            }
+
+            $storeId = (int)$this->storeManager->getWebsite($discountRequest->getWebsiteId())->getDefaultStore()->getId();
+            $productName = $this->productRepository->getById($discountRequest->getProductId(), false, $storeId)->getName();
+
+            $customerEmail = $discountRequest->getCustomerId()
+                ? $this->customerRepository->getById($discountRequest->getCustomerId())->getEmail()
+                : $discountRequest->getEmail();
+
+            if ($this->getRequest()->getParam('notify')) {
+                switch ($discountRequest->getStatus()) {
+                    case DiscountRequest::STATUS_APPROVED:
+                        $this->email->sendRequestApprovedEmail($customerEmail, $productName, $storeId);
+                        $discountRequest->setEmailSent(1);
+                        break;
+                    case DiscountRequest::STATUS_DECLINED:
+                        $this->email->sendRequestDeclinedEmail($customerEmail, $productName, $storeId);
+                        $discountRequest->setEmailSent(1);
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             $this->messageManager->addSuccessMessage(__('Request saved!'));
 
@@ -83,27 +109,6 @@ class Save extends \Magento\Backend\App\Action implements \Magento\Framework\App
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
         }
-
-        $storeId = (int) $this->storeManager->getWebsite($discountRequest->getWebsiteId())->getDefaultStore()->getId();
-        $productName = $this->productRepository->getById($discountRequest->getProductId(), false, $storeId)->getName();
-
-        $customerEmail = $discountRequest->getCustomerId()
-            ? $this->customerRepository->getById($discountRequest->getCustomerId())->getEmail()
-            : $discountRequest->getEmail();
-
-        if ($this->getRequest()->getParam('notify')) {
-            switch ($discountRequest->getStatus()) {
-                case DiscountRequest::STATUS_APPROVED:
-                    $this->email->sendRequestApprovedEmail($customerEmail, $productName, $storeId);
-                    break;
-                case DiscountRequest::STATUS_DECLINED:
-                    $this->email->sendRequestDeclinedEmail($customerEmail, $productName, $storeId);
-                    break;
-                default:
-                    break;
-            }
-        }
-
 
         return $resultRedirect->setPath(
             '*/*/'

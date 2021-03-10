@@ -80,10 +80,12 @@ class MassSendEmail extends AbstractMassAction
             switch ($discountRequest->getStatus()) {
                 case DiscountRequest::STATUS_APPROVED:
                     $this->email->sendRequestApprovedEmail($customerEmail, $productName, $storeId);
+                    $discountRequest->setEmailSent(1);
                     $transaction->addObject($discountRequest);
                     break;
                 case DiscountRequest::STATUS_DECLINED:
                     $this->email->sendRequestDeclinedEmail($customerEmail, $productName, $storeId);
+                    $discountRequest->setEmailSent(1);
                     $transaction->addObject($discountRequest);
                     break;
                 default:
@@ -92,6 +94,7 @@ class MassSendEmail extends AbstractMassAction
         }
 
         $transaction->save();
+        // ToDo change send email counter to the correct one (only for approved and decline requests)
         $this->messageManager->addSuccessMessage(__('For %1 requests(s) was sent email.', $collectionSize));
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
