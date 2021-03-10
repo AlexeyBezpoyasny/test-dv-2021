@@ -63,7 +63,6 @@ class MassSendEmail extends AbstractMassAction
         $collection = $this->filter->getCollection($this->discountRequestCollectionFactory->create());
 
         /** @var DiscountRequest $discountRequest */
-        $discountRequest = $this->discountRequestFactory->create();
         $collectionSize = $collection->count();
 
         foreach ($collection as $discountRequest) {

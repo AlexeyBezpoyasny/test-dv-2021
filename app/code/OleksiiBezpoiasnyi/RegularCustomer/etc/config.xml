@@ -5,6 +5,7 @@
             <general>
                 <enabled>1</enabled>
                 <allow_for_guests>1</allow_for_guests>
+                <sender_email_identity>custom2</sender_email_identity>
             </general>
         </oleksii_b_personal_discount>
     </default>

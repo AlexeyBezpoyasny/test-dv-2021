@@ -25,6 +25,10 @@ class Config
     public const XML_PATH_OLEKSII_B_PERSONAL_DISCOUNT_GENERAL_ALLOW_FOR_GUESTS
         = 'oleksii_b_personal_discount/general/allow_for_guests';
 
+    public const XML_PATH_OLEKSII_B_PERSONAL_DISCOUNT_GENERAL_SALES_EMAIL_IDENTITY
+        = 'oleksii_b_personal_discount/general/sender_email_identity';
+
+
     /**
      * @return bool
      */
@@ -44,6 +48,17 @@ class Config
         return (bool) $this->scopeConfig->getValue(
             self::XML_PATH_OLEKSII_B_PERSONAL_DISCOUNT_GENERAL_ALLOW_FOR_GUESTS,
             ScopeInterface::SCOPE_WEBSITE
+        );
+    }
+
+    /**
+     * @return string
+     */
+    public function getSenderEmailIdentity(): string
+    {
+        return (string) $this->scopeConfig->getValue(
+            self::XML_PATH_OLEKSII_B_PERSONAL_DISCOUNT_GENERAL_SALES_EMAIL_IDENTITY,
+            ScopeInterface::SCOPE_STORE
         );
     }
 }

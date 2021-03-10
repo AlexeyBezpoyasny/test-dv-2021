@@ -13,23 +13,28 @@ class Email
 
     private \Magento\Store\Model\StoreManagerInterface $storeManager;
 
+    private \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config;
+
     private \Psr\Log\LoggerInterface $logger;
 
     /**
      * @param \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder
      * @param \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Psr\Log\LoggerInterface $logger $logger
+     * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config
+     * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
         \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder,
         \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config,
         \Psr\Log\LoggerInterface $logger
     ) {
         $this->transportBuilder = $transportBuilder;
         $this->inlineTranslation = $inlineTranslation;
         $this->storeManager = $storeManager;
+        $this->config = $config;
         $this->logger = $logger;
     }
 
@@ -104,7 +109,7 @@ class Email
                     ]
                 )
                 ->setTemplateVars($templateVariables)
-                ->setFromByScope('support')
+                ->setFromByScope($this->config->getSenderEmailIdentity())
                 ->addTo($recipientEmail)
                 ->getTransport();
 
