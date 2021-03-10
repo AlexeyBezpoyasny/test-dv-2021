@@ -77,7 +77,12 @@ class RegularCustomersListingProvider extends \Magento\Framework\View\Element\Ui
             $item['product_link'] = $this->urlBuilder->getUrl('catalog/product/edit', ['id' => $item['product_id']]);
             /** @var Product $product */
             $product = $productCollection->getItemById($item['product_id']);
-            $item['product_name'] = $product->getName();
+            if ($item['product_id']) {
+                $item['product_name'] = $product->getName();
+            } else {
+                $item['product_id'] = 'n/a';
+                $item['product_name'] = 'n/a';
+            }
 
             $item['customer_link'] = $this->urlBuilder->getUrl('customer/index/edit', ['id' => $item['customer_id']]);
             /** @var Customer $customer */

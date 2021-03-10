@@ -55,4 +55,7 @@ Save,Save
 "Thank you for being interested in the product %product_name.","Thank you for being interested in the product %product_name."
 "We'll notify you updated about the request status.","We'll notify you updated about the request status."
 "Your request for the product %product_name has been approved!","Your request for the product %product_name has been approved!"
-"Your request for the product %product_name has been declined!",""Your request for the product %product_name has been declined!""
+"Your request for the product %product_name has been declined!","Your request for the product %product_name has been declined!"
+"Notify Customer by Email","Notify Customer by Email"
+"Send Email","Send Email"
+"For %1 requests(s) was sent email.","For %1 requests(s) was sent email."

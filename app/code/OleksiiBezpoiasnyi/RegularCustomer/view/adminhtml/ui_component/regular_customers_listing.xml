@@ -87,6 +87,13 @@
                     </actions>
                 </settings>
             </action>
+            <action name="sendEmail">
+                <settings>
+                    <url path="oleksiib_regular_customers/discount/massSendEmail"/>
+                    <type>sendEmail</type>
+                    <label translate="true">Send Email</label>
+                </settings>
+            </action>
         </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>

@@ -30,6 +30,10 @@ class Save extends \Magento\Backend\App\Action implements \Magento\Framework\App
      * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\DiscountRequestFactory $discountRequestFactory
      * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest $discountRequestResource
      * @param \Magento\Backend\Model\Auth\Session $authSession
+     * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\Email $email
+     * @param \Magento\Catalog\Model\ProductRepository $productRepository
+     * @param \Magento\Customer\Model\ResourceModel\CustomerRepository $customerRepository
+     * @param \Magento\Store\Model\StoreManager $storeManager
      * @param \Magento\Backend\App\Action\Context $context
      */
     public function __construct(
@@ -87,16 +91,19 @@ class Save extends \Magento\Backend\App\Action implements \Magento\Framework\App
             ? $this->customerRepository->getById($discountRequest->getCustomerId())->getEmail()
             : $discountRequest->getEmail();
 
-        switch ($discountRequest->getStatus()) {
-            case DiscountRequest::STATUS_APPROVED:
-                $this->email->sendRequestApprovedEmail($customerEmail, $productName, $storeId);
-                break;
-            case DiscountRequest::STATUS_DECLINED:
-                $this->email->sendRequestDeclinedEmail($customerEmail, $productName, $storeId);
-                break;
-            default:
-                break;
+        if ($this->getRequest()->getParam('notify')) {
+            switch ($discountRequest->getStatus()) {
+                case DiscountRequest::STATUS_APPROVED:
+                    $this->email->sendRequestApprovedEmail($customerEmail, $productName, $storeId);
+                    break;
+                case DiscountRequest::STATUS_DECLINED:
+                    $this->email->sendRequestDeclinedEmail($customerEmail, $productName, $storeId);
+                    break;
+                default:
+                    break;
+            }
         }
+
 
         return $resultRedirect->setPath(
             '*/*/'
