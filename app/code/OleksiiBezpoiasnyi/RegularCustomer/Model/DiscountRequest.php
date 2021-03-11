@@ -26,6 +26,8 @@ namespace OleksiiBezpoiasnyi\RegularCustomer\Model;
  * @method $this setAdminUserId(int $adminId)
  * @method int|string|null getCreatedAt()
  * @method int|string|null getUpdatedAt()
+ * @method int getStatusChangedAt()
+ * @method $this setStatusChangedAt(int $statusChangedAt)
  */
 class DiscountRequest extends \Magento\Framework\Model\AbstractModel
 {

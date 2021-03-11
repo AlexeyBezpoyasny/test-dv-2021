@@ -18,4 +18,11 @@
             <argument name="resourceModel" xsi:type="string">OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest</argument>
         </arguments>
     </virtualType>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="oleksiib_regular_customer_generate_requests" xsi:type="object">OleksiiBezpoiasnyi\RegularCustomer\Console\Command\GenerateFixtures</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

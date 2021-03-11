@@ -86,6 +86,12 @@
                 default="CURRENT_TIMESTAMP"
                 comment="Updated At"
         />
+        <column xsi:type="timestamp"
+                name="status_changed_at"
+                on_update="true"
+                nullable="false"
+                comment="Updated At"
+        />
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="request_id"/>
         </constraint>
