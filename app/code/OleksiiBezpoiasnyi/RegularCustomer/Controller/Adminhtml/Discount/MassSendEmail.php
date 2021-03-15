@@ -63,6 +63,10 @@ class MassSendEmail extends AbstractMassAction
         $collection = $this->filter->getCollection($this->discountRequestCollectionFactory->create());
 
         /** @var DiscountRequest $discountRequest */
+        $collection->addFieldToFilter(
+            'status',
+            ['in' => [DiscountRequest::STATUS_APPROVED, DiscountRequest::STATUS_DECLINED]]
+        );
         $collectionSize = $collection->count();
 
         foreach ($collection as $discountRequest) {

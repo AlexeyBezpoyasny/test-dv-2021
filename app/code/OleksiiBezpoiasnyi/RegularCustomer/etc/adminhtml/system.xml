@@ -4,7 +4,7 @@
         <tab id="oleksii_b" sortOrder="350">
             <label>Oleksii Bezpoiasnyi</label>
         </tab>
-        <section id="oleksii_b_personal_discount" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="0">
+        <section id="oleksii_b_personal_discount" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Personal Discount</label>
             <tab>oleksii_b</tab>
             <resource>OleksiiBezpoiasnyi_RegularCustomer::config</resource>
