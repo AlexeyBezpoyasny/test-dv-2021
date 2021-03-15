@@ -41,8 +41,7 @@ class RegularCustomersListingProvider extends \Magento\Framework\View\Element\Ui
         \Magento\Framework\Api\FilterBuilder $filterBuilder,
         array $meta = [],
         array $data = []
-    )
-    {
+    ) {
         parent::__construct(
             $name,
             $primaryFieldName,
@@ -89,6 +88,12 @@ class RegularCustomersListingProvider extends \Magento\Framework\View\Element\Ui
             $customer = $customerCollection->getItemById($item['customer_id']);
             if ($item['customer_id']) {
                 $item['customer_name'] = $customer->getName();
+            }
+
+            if (!$item['email_sent']) {
+                $item ['email_already_sent'] = 'No';
+            } else {
+                $item ['email_already_sent'] = 'Yes';
             }
         }
 

@@ -50,3 +50,13 @@ Declined,Отклонено
 "Edit Discount Request","Редактировать запрос"
 "New Discount Request","Новый запрос"
 Save,Сохранить
+"New Personal Discount Request","Новый запрос на персональную скидку"
+"Hi, %customer_name!","Добрый день, %customer_name!"
+"Thank you for being interested in the product %product_name.","Спасибо зато, что интересуетесь продуктом %product_name."
+"We'll notify you updated about the request status.","Мы сообщим Вам дополнительно про изменение статуса запроса."
+"Your request for the product %product_name has been approved!","Ваш запрос на получение скидки на товар %product_name одобрен!"
+"Your request for the product %product_name has been declined!","Ваш запрос на получение скидки на товар %product_name отклонен!"
+"Notify Customer by Email","Сообщить пользователю об отправке емейла"
+"Send Email","Отправить емеил"
+"For %1 requests(s) was sent email.","Для %1 запроса(ов) был отправлен емеил"
+"Email Sender","Отправитель емейлов"

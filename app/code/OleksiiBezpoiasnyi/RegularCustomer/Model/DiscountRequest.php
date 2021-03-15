@@ -14,6 +14,8 @@ namespace OleksiiBezpoiasnyi\RegularCustomer\Model;
  * @method $this setName(string $name)
  * @method string|null getEmail()
  * @method $this setEmail(string $email)
+ * @method int|string|null getEmailSent()
+ * @method $this setEmailSent(int $emailSent)
  * @method int|string|null getWebsiteId()
  * @method $this setWebsiteId(int $websiteId)
  * @method int|string|null getStatus()

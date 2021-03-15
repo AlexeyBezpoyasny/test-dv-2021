@@ -45,6 +45,9 @@ class MassAction extends \Magento\Ui\Component\MassAction
                 case 'delete':
                     $alcResource = Authorization::ACTION_DISCOUNT_REQUEST_DELETE;
                     break;
+                case 'sendEmail':
+                    $alcResource = Authorization::ACTION_DISCOUNT_REQUEST;
+                    break;
                 default:
                     throw new \InvalidArgumentException("Unknown action type: $actionType");
             }

@@ -87,6 +87,13 @@
                     </actions>
                 </settings>
             </action>
+            <action name="sendEmail">
+                <settings>
+                    <url path="oleksiib_regular_customers/discount/massSendEmail"/>
+                    <type>sendEmail</type>
+                    <label translate="true">Send Email</label>
+                </settings>
+            </action>
         </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
@@ -156,6 +163,11 @@
                 <filter>text</filter>
                 <sorting>asc</sorting>
                 <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="email_already_sent" sortOrder="53">
+            <settings>
+                <label translate="true">Email Sent</label>
             </settings>
         </column>
         <column name="created_at" sortOrder="55">

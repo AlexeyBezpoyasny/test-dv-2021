@@ -34,6 +34,7 @@ class MassChangeStatus extends AbstractMassAction
         foreach ($collection as $item) {
             $item->setStatus($status);
             $item->setAdminUserId($adminId);
+            $item->setEmailSent(0);
             $transaction->addObject($item);
         }
 

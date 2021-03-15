@@ -37,6 +37,11 @@ class RegularCustomersFormProvider extends \Magento\Ui\DataProvider\AbstractData
 
         foreach (parent::getData()['items'] as $item) {
             $data[$item['request_id']] = $item;
+            if ($item['email_sent']) {
+                $data[$item['request_id']]['sent_email'] = 'Yes';
+            } else {
+                $data[$item['request_id']]['sent_email'] = 'No';
+            }
         }
 
         return $data;

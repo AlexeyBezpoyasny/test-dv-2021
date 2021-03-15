@@ -6,6 +6,7 @@
             "product_id": true,
             "name": true,
             "email": true,
+            "email_sent": true,
             "website_id": true,
             "status": true,
             "discount_size": true,
