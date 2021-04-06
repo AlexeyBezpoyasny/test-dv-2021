@@ -78,7 +78,8 @@ class Save extends \Magento\Backend\App\Action implements \Magento\Framework\App
                 ->setAdminUserId($adminId);
             if ($discountRequest->getStatus() !== $this->getRequest()->getParam('status')) {
                 $discountRequest->setEmailSent(0)
-                    ->setStatus($this->getRequest()->getParam('status'));
+                                ->setStatus($this->getRequest()->getParam('status'))
+                                ->setStatusChangedAt(time());
             }
 
             $storeId = (int)$this->storeManager->getWebsite($discountRequest->getWebsiteId())->getDefaultStore()->getId();

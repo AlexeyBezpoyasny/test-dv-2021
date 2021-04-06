@@ -90,7 +90,7 @@
                 name="status_changed_at"
                 on_update="true"
                 nullable="false"
-                comment="Updated At"
+                comment="Status Changed At"
         />
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="request_id"/>

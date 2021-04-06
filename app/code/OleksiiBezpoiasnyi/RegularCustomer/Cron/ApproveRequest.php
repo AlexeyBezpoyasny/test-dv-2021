@@ -43,7 +43,8 @@ class ApproveRequest
         /** @var DiscountRequest $discountRequest */
         foreach ($collection as $discountRequest) {
             if (strtotime($discountRequest->getCreatedAt()) >= strtotime('-3 days')) {
-                $discountRequest->setStatus(DiscountRequest::STATUS_APPROVED);
+                $discountRequest->setStatus(DiscountRequest::STATUS_APPROVED)
+                                ->setStatusChangedAt(time());
                 $transaction->addObject($discountRequest);
             }
         }
