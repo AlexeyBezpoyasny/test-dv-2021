@@ -60,3 +60,6 @@ Save,Сохранить
 "Send Email","Отправить емеил"
 "For %1 requests(s) was sent email.","Для %1 запроса(ов) был отправлен емеил"
 "Email Sender","Отправитель емейлов"
+"Cron Frequency","Частота выполнения задач по расписанию"
+"Cron Frequency to automatically approve all pending requests","Частота выполнения задачи по автоматическому подтверждению всех отправленных запросов"
+"Frequency","Частота"

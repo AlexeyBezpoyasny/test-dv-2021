@@ -60,3 +60,6 @@ Save,Save
 "Send Email","Send Email"
 "For %1 requests(s) was sent email.","For %1 requests(s) was sent email."
 "Email Sender","Email Sender"
+"Cron Frequency","Cron Frequency"
+"Cron Frequency to automatically approve all pending requests","Cron Frequency to automatically approve all pending requests"
+"Frequency","Frequency"

@@ -3,7 +3,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
         <job name="oleksiib_regular_customer_approve_request" instance="OleksiiBezpoiasnyi\RegularCustomer\Cron\ApproveRequest" method="execute">
-            <schedule>0 */1 * * *</schedule>
+            <config_path>oleksii_b_personal_discount/cron/frequency</config_path>
         </job>
     </group>
 </config>

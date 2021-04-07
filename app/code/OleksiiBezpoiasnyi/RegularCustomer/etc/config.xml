@@ -7,6 +7,9 @@
                 <allow_for_guests>1</allow_for_guests>
                 <sender_email_identity>custom2</sender_email_identity>
             </general>
+            <cron>
+                <frequency>0 * * * *</frequency>
+            </cron>
         </oleksii_b_personal_discount>
     </default>
 </config>
