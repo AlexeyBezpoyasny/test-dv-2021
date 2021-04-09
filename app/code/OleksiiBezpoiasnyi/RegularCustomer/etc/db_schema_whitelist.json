@@ -28,5 +28,9 @@
             "OLEKSIIB_REGULAR_CSTR_WS_ID_STORE_WS_WS_ID": true,
             "OLEKSIIB_REGULAR_CUSTOMER_ADMIN_USER_ID_ADMIN_USER_USER_ID": true
         }
+    },
+    "quote": {
+        "personal_discount": true,
+        "base_personal_discount": true
     }
 }

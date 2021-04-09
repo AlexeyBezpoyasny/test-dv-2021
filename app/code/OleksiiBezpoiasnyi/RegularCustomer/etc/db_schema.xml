@@ -140,4 +140,20 @@
                     onDelete="SET NULL"
         />
     </table>
+    <table name="quote" resource="default" engine="innodb">
+        <column xsi:type="decimal"
+                name="personal_discount"
+                scale="4"
+                precision="20"
+                nullable="true"
+                comment="Personal Discount"
+        />
+        <column xsi:type="decimal"
+                name="base_personal_discount"
+                scale="4"
+                precision="20"
+                nullable="true"
+                comment="Base Personal Discount"
+        />
+    </table>
 </schema>
