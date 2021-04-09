@@ -1,44 +1,69 @@
+"Are you sure you want to delete this request?","Вы дествительно хотите удалить этот запрос?"
+Delete,Удалить
+Save,Сохранить
 pending,на рассмотрении
 approved,утверждено
 declined,отклонено
+"Request deleted!","Запрос удален!"
+"We can't find a request to delete.","Невозможно найти запрос для удаления."
+"This request no longer exists.","Данного запроса не существует."
+"Edit Discount Request","Редактировать запрос"
+"New Discount Request","Новый запрос на скидку"
+"%1 requests(s) have been updated.","%1 запрос(ов) обновлено."
+"%1 requests(s) have been deleted.","%1 запрос(ов) удалено."
+"For %1 requests(s) was sent email.","Для %1 запрос(ов) отправлен емеил."
+"Request saved!","Запрос сохранен!"
 "You request for registration in loyalty program was accepted! Your discount will be available after admin verification","Ваш запрос на регистрацию в программе лояльности успешно отправлен! Ваша скидка будет доступна после проверки администратором"
 "Your request can't be sent. Please, contact us if you see this message.","Ваш запрос не может быть отправлен. Если Вы видите это сообщение, свяжитесь с нами."
-"Please register to participate in the loyalty program","Пожайлуста зарегистрируйтесь для участия в программе лояльности"
-"Participate in the program","Участвовать в программе"
-"Registration in Loyalty Program","Регистрация в программе лояльности"
-Name,Имя
-"Email","Адрес электронной почты"
-Register,Зарегистрироваться
-"Your amount of discount:","Размер вашей скидки:"
+Edit,Редактировать
+Pending,На рассмотрении
+Approved,Подтверждено
+Declined,Отклонено
+"Your amount of discount:","Количество Ваших запросов:"
 "The amount of the discount has not yet been set by the administrator","Размер Вашей скидки на даный момент не установлен администратором"
 "Request status:","Статус запроса:"
 "No request to register in loyalty program","Запрос на регистрацию в програме лояльности отсутсвует"
+"Personal Discount Request Approved","Запрос на персональную скидку Одобрен"
+"Your request for the product %product_name has been <span class=""dv-campus-discount-request-approved"">approved</span>!","Ваш запрос на продукт %product_name был <span class=""dv-campus-discount-request-approved"">одобрен</span>!"
+"Personal Discount Request Declined","Запрос на персональную скидку отклонен"
+"Your request for the product %product_name has been <span class=""dv-campus-discount-request-declined"">declined</span>!","Ваш запрос на продукт %product_name был <span class=""dv-campus-discount-request-declined"">оклонен</span>!"
+"New Personal Discount Request","Новый запрос на персональную скидку"
+"Hi, %customer_name!","Здравствуйте, %customer_name!"
+"Thank you for being interested in the product %product_name.","Спасибо, что заинтересовались продуктом %product_name."
+"We'll notify you updated about the request status.","Мы сообщим Вам об изменении статуса."
+"Please register to participate in the loyalty program","Пожайлуста, зарегистрируйтесь для участия в програме лояльности"
+"Participate in the program","Зарегистрироваться в програме"
+"Already requested!","Запрос был отправлен раннее!"
+"Registration in Loyalty Program","Зарегистрироваться в Програме Лояльности"
+", for register in loyalty program, please click button below",", для регистрации в программе лояльности, нажмите на кнопку ниже"
+Name,Имя
+Email,Емеил
+Register,Зарегистрироваться
 Success,Успешно
 Error,Ошибка
-"Loyalty program for Regular Customers","Программа лояльности для постоянных клиентов"
-"Loyalty Program","Програма лояльности"
-"Please, sign in or sign up","Пожайлуста, войдите в свой аккаунт или зарегистрируйтесь"
-"Already requested!","Запрос был отправлен раннее!"
-", for register in loyalty program, please click button below",", для регистрации в программе лояльности, нажмите на кнопку ниже"
+"Personal Discount","Персоенальная скидка"
+"Regular Customers","Постоянные покупатели"
 "General Settings","Главные настройки"
 "Settings per store view are not available","Настройки для отдельных витрин недоступны"
-"Enabled","Включено"
+Enabled,Включено
 "Allow for Guests","Разрешено для гостей"
 "Allow guests to submit discount requests","Незарегистрированые пользователи могут отправлять запрос на скидку"
-"Regular Customers","Постоянные покупатели"
-"Personal Discount","Персональна знижка"
-"Edit","Изменить"
-"Delete","Delete"
-"Add New Request","Добавить новый запрос"
+"Email Sender","Отправитель емеала"
+Back,Назад
+"Product ID","ID продукта"
+"Customer Id","Id пользователя"
+"Email Sent","Емеил отправлен"
+Status,Статус
+"Notify Customer by Email","Сообщить пользователю об отправке емейла"
+"Add New Request","Добавть новый запрос"
 "Are you sure you want to delete selected requests?","Вы действительно хотите удалить выбранные запросы?"
 "Delete Requests","Удалить запросы"
 "Change status","Изменить статус"
-"Pending","На рассмотрении"
-Approved,Подтверждено
-Declined,Отклонено
+"Send Email","Отправить емеил"
 "Discount Request ID","ID запроса на скидку"
-"Product ID","ID продукта"
-"Product Name","Имя продукта"
+"Product Name","имя продукта"
+"Customer ID","ID пользователя"
+"Customer Name","Тия пользователя"
 "Entered Name","Введенное имя"
 "Are you sure you want to delete this request?","Вы дествительно хотите удалить этот продукт?"
 "Website","Вебсайт"
@@ -63,3 +88,6 @@ Save,Сохранить
 "Cron Frequency","Частота выполнения задач по расписанию"
 "Cron Frequency to automatically approve all pending requests","Частота выполнения задачи по автоматическому подтверждению всех отправленных запросов"
 "Frequency","Частота"
+Website,Вебсайт
+"Loyalty program for Regular Customers","Прошрама Лояльности для постоянный покупателей"
+"Loyalty Program","Програма лояльности"

@@ -1,49 +1,74 @@
+"Are you sure you want to delete this request?","Are you sure you want to delete this request?"
+Delete,Delete
+Save,Save
 pending,pending
 approved,approved
 declined,declined
+"Request deleted!","Request deleted!"
+"We can't find a request to delete.","We can't find a request to delete."
+"This request no longer exists.","This request no longer exists."
+"Edit Discount Request","Edit Discount Request"
+"New Discount Request","New Discount Request"
+"%1 requests(s) have been updated.","%1 requests(s) have been updated."
+"%1 requests(s) have been deleted.","%1 requests(s) have been deleted."
+"For %1 requests(s) was sent email.","For %1 requests(s) was sent email."
+"Request saved!","Request saved!"
 "You request for registration in loyalty program was accepted! Your discount will be available after admin verification","You request for registration in loyalty program was accepted! Your discount will be available after admin verification"
 "Your request can't be sent. Please, contact us if you see this message.","Your request can't be sent. Please, contact us if you see this message."
-"Please register to participate in the loyalty program","Please register to participate in the loyalty program"
-"Participate in the program","Participate in the program"
-"Registration in Loyalty Program","Registration in Loyalty Program"
-Name,Name
-Email,Email
-Register,Register
+Edit,Edit
+Pending,Pending
+Approved,Approved
+Declined,Declined
 "Your amount of discount:","Your amount of discount:"
 "The amount of the discount has not yet been set by the administrator","The amount of the discount has not yet been set by the administrator"
 "Request status:","Request status:"
 "No request to register in loyalty program","No request to register in loyalty program"
+"Personal Discount Request Approved","Personal Discount Request Approved"
+"Your request for the product %product_name has been <span class=""dv-campus-discount-request-approved"">approved</span>!","Your request for the product %product_name has been <span class=""dv-campus-discount-request-approved"">approved</span>!"
+"Personal Discount Request Declined","Personal Discount Request Declined"
+"Your request for the product %product_name has been <span class=""dv-campus-discount-request-declined"">declined</span>!","Your request for the product %product_name has been <span class=""dv-campus-discount-request-declined"">declined</span>!"
+"New Personal Discount Request","New Personal Discount Request"
+"Hi, %customer_name!","Hi, %customer_name!"
+"Thank you for being interested in the product %product_name.","Thank you for being interested in the product %product_name."
+"We'll notify you updated about the request status.","We'll notify you updated about the request status."
+"Please register to participate in the loyalty program","Please register to participate in the loyalty program"
+"Participate in the program","Participate in the program"
+"Already requested!","Already requested!"
+"Registration in Loyalty Program","Registration in Loyalty Program"
+", for register in loyalty program, please click button below",", for register in loyalty program, please click button below"
+Name,Name
+Email,Email
+Register,Register
 Success,Success
 Error,Error
-"Loyalty program for Regular Customers","Loyalty program for Regular Customers"
-"Loyalty Program","Loyalty Program"
-"Please, sign in or sign up","Please, sign in or sign up"
-"Already requested!","Already requested!"
-", for register in loyalty program, please click button below",", for register in loyalty program, please click button below"
+"Personal Discount","Personal Discount"
+"Regular Customers","Regular Customers"
 "General Settings","General Settings"
 "Settings per store view are not available","Settings per store view are not available"
-"Enabled","Enabled"
+Enabled,Enabled
 "Allow for Guests","Allow for Guests"
-"Allow guests to submit discount requests","Allow guests to submit discount requests",
-"Regular Customers","Regular Customers"
-"Personal Discount","Personal Discount"
-"Edit","Edit"
-"Delete","Delete",
-"Add New Request","Add New Request",
+"Allow guests to submit discount requests","Allow guests to submit discount requests"
+"Email Sender","Email Sender"
+Back,Back
+"Product ID","Product ID"
+"Customer Id","Customer Id"
+"Email Sent","Email Sent"
+Status,Status
+"Notify Customer by Email","Notify Customer by Email"
+"Add New Request","Add New Request"
 "Are you sure you want to delete selected requests?","Are you sure you want to delete selected requests?"
 "Delete Requests","Delete Requests"
 "Change status","Change status"
-Pending,Pending
-Approved,Approved
-Declined,Declined
+"Send Email","Send Email"
 "Discount Request ID","Discount Request ID"
-"Product ID","Product ID"
 "Product Name","Product Name"
+"Customer ID","Customer ID"
+"Customer Name","Customer Name"
 "Entered Name","Entered Name"
-"Are you sure you want to delete this request?","Are you sure you want to delete this request?"
-"Website","Website"
-"Status","Status"
 "Date added","Date added"
+Website,Website
+"Loyalty program for Regular Customers","Loyalty program for Regular Customers"
+"Loyalty Program","Loyalty Program"
 "Request deleted!","Request deleted!"
 "We can\'t find a request to delete.","We can\'t find a request to delete."
 "This request no longer exists.","This request no longer exists."
