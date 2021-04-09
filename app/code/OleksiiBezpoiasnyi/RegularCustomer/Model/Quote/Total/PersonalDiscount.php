@@ -24,6 +24,10 @@ class PersonalDiscount extends \Magento\Quote\Model\Quote\Address\Total\Abstract
     ): AbstractTotal {
         parent::collect($quote, $shippingAssignment, $total);
 
+        if (!$shippingAssignment->getItems()) {
+            return $this;
+        }
+
         $personalDiscount = -($total->getSubtotal() * self::DISCOUNT_PERCENT);
         $basePersonalDiscount = -($total->getBaseSubtotal() * self::DISCOUNT_PERCENT);
 
