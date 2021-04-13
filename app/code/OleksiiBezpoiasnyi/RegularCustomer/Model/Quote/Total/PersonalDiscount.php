@@ -4,12 +4,31 @@ declare(strict_types=1);
 namespace OleksiiBezpoiasnyi\RegularCustomer\Model\Quote\Total;
 
 use Magento\Quote\Model\Quote\Address\Total\AbstractTotal;
+use OleksiiBezpoiasnyi\RegularCustomer\Model\DiscountRequest;
+use OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\Collection as DiscountRequestCollection;
 
 class PersonalDiscount extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
 {
     public const DISCOUNT_PERCENT = 0.05;
 
     public const TOTAL_CODE = 'personal_discount';
+
+    private \Magento\Customer\Model\Session $customerSession;
+
+    private \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\CollectionFactory $collectionFactory;
+
+    /**
+     * PersonalDiscount constructor.
+     * @param \Magento\Customer\Model\Session $customerSession
+     * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\CollectionFactory $collectionFactory
+     */
+    public function __construct(
+        \Magento\Customer\Model\Session $customerSession,
+        \OleksiiBezpoiasnyi\RegularCustomer\Model\ResourceModel\DiscountRequest\CollectionFactory $collectionFactory
+    ) {
+        $this->customerSession = $customerSession;
+        $this->collectionFactory = $collectionFactory;
+    }
 
     /**
      * @param \Magento\Quote\Model\Quote $quote
@@ -27,9 +46,29 @@ class PersonalDiscount extends \Magento\Quote\Model\Quote\Address\Total\Abstract
         if (!$shippingAssignment->getItems()) {
             return $this;
         }
+        $customerId = $this->customerSession->getCustomerId();
 
-        $personalDiscount = -($total->getSubtotal() * self::DISCOUNT_PERCENT);
-        $basePersonalDiscount = -($total->getBaseSubtotal() * self::DISCOUNT_PERCENT);
+        /** @var DiscountRequestCollection $collection */
+        $collection = $this->collectionFactory->create();
+        $collection->addFieldToFilter('customer_id', $customerId)
+            ->addFieldToFilter('status', DiscountRequest::STATUS_APPROVED);
+
+        $approvedProductIds = $collection->getColumnValues('product_id');
+        $quoteItems = $quote->getAllVisibleItems();
+        $personalDiscountAmount = 0.0;
+        $personalDiscountBaseAmount = 0.0;
+
+        /** @var \Magento\Quote\Model\Quote\Item $quoteItem */
+        foreach ($quoteItems as $quoteItem) {
+            $quoteProductId = $quoteItem->getProduct()->getId();
+            if (in_array($quoteProductId, $approvedProductIds, false)) {
+                $personalDiscountAmount += $quoteItem->getRowTotal();
+                $personalDiscountBaseAmount += $quoteItem->getBaseRowTotal();
+            }
+        }
+
+        $personalDiscount = -(self::DISCOUNT_PERCENT * $personalDiscountAmount);
+        $basePersonalDiscount = -(self::DISCOUNT_PERCENT * $personalDiscountBaseAmount);
 
         $total->addTotalAmount(self::TOTAL_CODE, $personalDiscount);
         $total->addBaseTotalAmount(self::TOTAL_CODE, $basePersonalDiscount);
