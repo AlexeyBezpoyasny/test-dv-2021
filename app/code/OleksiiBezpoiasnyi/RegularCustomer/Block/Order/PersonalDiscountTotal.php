@@ -5,7 +5,7 @@ namespace OleksiiBezpoiasnyi\RegularCustomer\Block\Order;
 
 use OleksiiBezpoiasnyi\RegularCustomer\Model\Quote\Total\PersonalDiscount;
 
-class CustomTotal extends \Magento\Framework\View\Element\AbstractBlock
+class PersonalDiscountTotal extends \Magento\Framework\View\Element\AbstractBlock
 {
     private \OleksiiBezpoiasnyi\RegularCustomer\Model\Quote\Total\PersonalDiscount $personalDiscount;
 
