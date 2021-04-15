@@ -75,11 +75,12 @@ class Save extends \Magento\Backend\App\Action implements \Magento\Framework\App
                 ->setName($this->getRequest()->getParam('name'))
                 ->setEmail($this->getRequest()->getParam('email'))
                 ->setWebsiteId($this->getRequest()->getParam('website_id'))
-                ->setAdminUserId($adminId);
+                ->setAdminUserId($adminId)
+                ->setDiscountPercent($this->getRequest()->getParam('discount_percent'));
             if ($discountRequest->getStatus() !== $this->getRequest()->getParam('status')) {
                 $discountRequest->setEmailSent(0)
-                                ->setStatus($this->getRequest()->getParam('status'))
-                                ->setStatusChangedAt(time());
+                    ->setStatus($this->getRequest()->getParam('status'))
+                    ->setStatusChangedAt(time());
             }
 
             $storeId = (int)$this->storeManager->getWebsite($discountRequest->getWebsiteId())->getDefaultStore()->getId();

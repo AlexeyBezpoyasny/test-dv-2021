@@ -17,8 +17,7 @@ class PersonalDiscountTotal extends \Magento\Framework\View\Element\AbstractBloc
     public function __construct(
         \OleksiiBezpoiasnyi\RegularCustomer\Model\Quote\Total\PersonalDiscount $personalDiscount,
         \Magento\Framework\View\Element\Template\Context $context
-    )
-    {
+    ) {
         parent::__construct($context);
         $this->personalDiscount = $personalDiscount;
     }

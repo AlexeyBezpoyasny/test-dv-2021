@@ -92,6 +92,13 @@
                 nullable="false"
                 comment="Status Changed At"
         />
+        <column xsi:type="decimal"
+                name="discount_percent"
+                scale="4"
+                precision="20"
+                nullable="true"
+                comment="Discount Percent"
+        />
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="request_id"/>
         </constraint>

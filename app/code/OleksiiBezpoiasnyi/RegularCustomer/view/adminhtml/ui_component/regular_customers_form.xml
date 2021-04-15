@@ -57,6 +57,16 @@
                 </validation>
             </settings>
         </field>
+        <field name="discount_percent" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Discount Percent</label>
+                <dataScope>discount_percent</dataScope>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
         <field name="customer_id" formElement="input">
             <settings>
                 <dataType>text</dataType>

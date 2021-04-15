@@ -28,6 +28,8 @@ namespace OleksiiBezpoiasnyi\RegularCustomer\Model;
  * @method int|string|null getUpdatedAt()
  * @method int getStatusChangedAt()
  * @method $this setStatusChangedAt(int $statusChangedAt)
+ * @method int getDiscountPercent()
+ * @method $this setDiscountPercent(int $discountPercent)
  */
 class DiscountRequest extends \Magento\Framework\Model\AbstractModel
 {

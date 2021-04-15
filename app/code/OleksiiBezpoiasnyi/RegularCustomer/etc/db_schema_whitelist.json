@@ -13,7 +13,8 @@
             "admin_user_id": true,
             "created_at": true,
             "updated_at": true,
-            "status_changed_at": true
+            "status_changed_at": true,
+            "discount_percent": true
         },
         "index": {
             "OLEKSIIB_REGULAR_CUSTOMER_CUSTOMER_ID": true,
