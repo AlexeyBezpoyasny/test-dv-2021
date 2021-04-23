@@ -12,7 +12,7 @@ class Index extends \Magento\Framework\App\Action\Action implements \Magento\Fra
 {
     private \Magento\Framework\View\Result\PageFactory $pageResponseFactory;
 
-    private \Magento\Backend\Model\View\Result\ForwardFactory $forwardFactory;
+    private \Magento\Framework\Controller\Result\ForwardFactory $forwardFactory;
 
     private \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config;
 
@@ -21,14 +21,14 @@ class Index extends \Magento\Framework\App\Action\Action implements \Magento\Fra
     /**
      * Controller constructor.
      * @param \Magento\Framework\View\Result\PageFactory $pageResponseFactory
-     * @param \Magento\Backend\Model\View\Result\ForwardFactory $forwardFactory
+     * @param \Magento\Framework\Controller\Result\ForwardFactory $forwardFactory
      * @param \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config
      * @param \Magento\Customer\Model\Session $customerSession
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
         \Magento\Framework\View\Result\PageFactory $pageResponseFactory,
-        \Magento\Backend\Model\View\Result\ForwardFactory $forwardFactory,
+        \Magento\Framework\Controller\Result\ForwardFactory $forwardFactory,
         \OleksiiBezpoiasnyi\RegularCustomer\Model\Config $config,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\App\Action\Context $context

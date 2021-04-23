@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/personal-discount/list" method="GET">
+        <service class="OleksiiBezpoiasnyi\RegularCustomer\Api\DiscountRequestRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/personal-discount/save/:requestId" method="POST">
+        <service class="OleksiiBezpoiasnyi\RegularCustomer\Api\DiscountRequestRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/personal-discount/get/:requestId" method="GET">
+        <service class="OleksiiBezpoiasnyi\RegularCustomer\Api\DiscountRequestRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/personal-discount/delete" method="DELETE">
+        <service class="OleksiiBezpoiasnyi\RegularCustomer\Api\DiscountRequestRepositoryInterface" method="delete"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/personal-discount/delete/:requestId" method="DELETE">
+        <service class="OleksiiBezpoiasnyi\RegularCustomer\Api\DiscountRequestRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

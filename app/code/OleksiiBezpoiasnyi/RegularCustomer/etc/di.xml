@@ -25,4 +25,13 @@
             </argument>
         </arguments>
     </type>
+    <preference for="OleksiiBezpoiasnyi\RegularCustomer\Api\DiscountRequestRepositoryInterface"
+                type="OleksiiBezpoiasnyi\RegularCustomer\Model\Api\DiscountRequestRepository"
+    />
+    <preference for="OleksiiBezpoiasnyi\RegularCustomer\Api\Data\DiscountRequestInterface"
+                type="OleksiiBezpoiasnyi\RegularCustomer\Model\DiscountRequest"
+    />
+    <preference for="OleksiiBezpoiasnyi\RegularCustomer\Api\Data\DiscountRequestSearchResultInterface"
+                type="OleksiiBezpoiasnyi\RegularCustomer\Model\Api\DiscountRequestSearchResult"
+    />
 </config>
