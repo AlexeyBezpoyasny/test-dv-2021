@@ -4,12 +4,17 @@ declare(strict_types=1);
 namespace OleksiiBezpoiasnyi\TestTask\Plugin;
 
 use Magento\Sales\Api\Data\OrderExtensionFactory;
+use Magento\Sales\Api\Data\OrderExtensionInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\OrderSearchResultInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 
-class TestPlugin
+class AddCustomAttrToOrder
 {
+    public const FIELD_NAME = 'test1';
+
+    public const FIELD_NAME2 = 'test2';
+
     protected OrderExtensionFactory $extensionFactory;
 
     /**
@@ -18,8 +23,7 @@ class TestPlugin
      * @param OrderExtensionFactory $extensionFactory
      */
     public function __construct(
-        OrderExtensionFactory $extensionFactory,
-        \Magento\Customer\Model\Session $customerSession
+        OrderExtensionFactory $extensionFactory
     ) {
         $this->extensionFactory = $extensionFactory;
     }
@@ -29,24 +33,31 @@ class TestPlugin
      * @param OrderInterface $order
      * @return OrderInterface
      */
-    public function afterGet(OrderRepositoryInterface $subject, OrderInterface $order)
+    public function afterGet(OrderRepositoryInterface $subject, OrderInterface $order): OrderInterface
     {
-        $test1 = $order->getData('customer_id');
-        $test2 = $order->getData('customer_email');
+        $test1 = $order->getData(self::FIELD_NAME);
+        $test2 = $order->getData(self::FIELD_NAME2);
         $extensionAttributes = $order->getExtensionAttributes();
         $extensionAttributes = $extensionAttributes ?: $this->extensionFactory->create();
         $extensionAttributes->setTest1($test1);
         $extensionAttributes->setTest2($test2);
         $order->setExtensionAttributes($extensionAttributes);
+
         return $order;
     }
 
-    public function afterGetList(OrderRepositoryInterface $subject, OrderSearchResultInterface $searchResult)
+    /**
+     * @param OrderRepositoryInterface $subject
+     * @param OrderSearchResultInterface $searchResult
+     * @return OrderSearchResultInterface
+     */
+    public function afterGetList(OrderRepositoryInterface $subject, OrderSearchResultInterface $searchResult): OrderSearchResultInterface
     {
         $orders = $searchResult->getItems();
-        foreach ($orders as &$order) {
-            $test1 = $order->getData('customer_id');
-            $test2 = $order->getData('customer_email');
+
+        foreach ($orders as $order) {
+            $test1 = $order->getData(self::FIELD_NAME);
+            $test2 = $order->getData(self::FIELD_NAME2);
             $extensionAttributes = $order->getExtensionAttributes();
             $extensionAttributes = $extensionAttributes ?: $this->extensionFactory->create();
             $extensionAttributes->setTest1($test1);
